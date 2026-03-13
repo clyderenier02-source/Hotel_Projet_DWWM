@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Laisser un avis{% endblock %}
+
+{% block body %}
+<section class="opinion">
+    <div class="opinion__card">
+        <div class="opinion__header">
+            <span class="opinion__badge">Hôtel</span>
+            <h1 class="opinion__title">Votre avis</h1>
+            <p class="opinion__subtitle">Partagez votre expérience avec nous</p>
+        </div>
+
+        {{ form_start(form) }}
+            {{ form_widget(form.note, {'attr': {'id': 'opinion_note', 'style': 'display:none'}}) }}
+
+            <div class="opinion__rating">
+                <div class="opinion__stars" id="star-widget">
+                    {% for i in 1..5 %}
+                        <img src="{{ asset('svg/star.svg') }}" class="opinion__star" data-value="{{ i }}" alt="étoile">
+                    {% endfor %}
+                </div>
+                <p class="opinion__rating-label opinion__rating-label--empty" id="rating-text">
+                    Sélectionnez une note
+                </p>
+            </div>
+
+            <div class="opinion__field">
+                <label class="opinion__label" for="opinion_comment">Votre commentaire</label>
+                {{ form_widget(form.comment, {
+                    'attr': {
+                        'class': 'opinion__textarea',
+                        'id': 'opinion_comment',
+                        'placeholder': 'Décrivez votre séjour...',
+                        'maxlength': '500',
+                        'rows': '5'
+                    }
+                }) }}
+                <span class="opinion__counter" id="char-wrap">
+                    <span id="char-count">0</span>/500
+                </span>
+            </div>
+
+            {% if form.note.vars.errors|length > 0 or form.comment.vars.errors|length > 0 %}
+                <div class="opinion__errors">
+                    {{ form_errors(form.note) }}
+                    {{ form_errors(form.comment) }}
+                </div>
+            {% endif %}
+            <button type="submit" class="opinion__submit" id="btn-submit" disabled>Complétez le formulaire</button>
+        {{ form_end(form) }}
+    </div>
+</section>
+{% endblock %}

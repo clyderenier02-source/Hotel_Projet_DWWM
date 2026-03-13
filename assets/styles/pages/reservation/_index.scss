@@ -1,0 +1,28 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.reservation {
+    width: 100%;
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+
+    &__card {
+        margin-bottom: 3rem;
+        background-color: $forest-dark;
+        border-radius: 5px;
+        box-shadow: 5px 3px #2C5F4A, -0.3em 0 0.7em #2C5F4A;
+        padding: 2rem 2rem;
+    }
+
+
+    &__list {
+        width: 80%;
+        padding: 2rem 2rem;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+    }
+}

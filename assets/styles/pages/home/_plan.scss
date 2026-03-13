@@ -1,0 +1,44 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.homePlan {
+    background-image: 
+    radial-gradient(
+        ellipse 80% 50% at center,
+        rgba(214, 171, 112, 0.9) 60%,
+        rgba(214, 171, 112, 0.7) 70%,
+        rgba(214, 171, 112, 0.5) 80%,
+        rgba(214, 171, 112, 0.3) 90%,
+        rgba(214, 171, 112, 0.15) 100%
+        ),
+        linear-gradient(
+        rgba(214, 171, 112, 0.6)
+        ),
+        url("/Img-accueil/fond_plan.png");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+
+    &__text {
+        padding-top: 4rem;
+        text-align: center;
+        padding: 4rem 5rem;
+    }
+
+    &__text h2 {
+        color: $forest-dark;
+        font-size: 3.5rem;
+    }
+
+    &__text p {
+        color: $forest-dark;
+        font-size: 2.5rem;
+    }
+
+    &__button {
+        background-color: $forest-dark;
+        color: $white;
+    }
+}

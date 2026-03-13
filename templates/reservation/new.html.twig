@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+<section class="reservationNew">
+    <div class="reservationNew__dates">
+        <p>Arrivée : {{ arrived|date('d-m-Y') }}</p>
+        <span>-</span>
+        <p>Départ : {{ return|date('d-m-Y') }}</p>
+    </div>
+</section>
+
+    <section class="reservationList">
+            {% for room in rooms %}
+
+            <div class="card">
+                <div class="card__image">
+                    {% if room.photos|length > 0 %}
+                        <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}">
+                    {% endif %}
+                </div>
+
+                <div class="card__content">
+                    <h3 class="card__name">{{ room.name }}</h3>
+                    <p class="roomCard__price">{{ room.priceNight }}€ / nuit</p>
+
+                    <div class="card__actions">
+                        <a href="{{ path('app_payment_index', {'id': room.id}) }}">Réserver</a>
+                        <a href="{{ path('app_room_edit', {'id': room.id}) }}">Détail</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+    <h3>jsjsjs</h3>
+  </div>
+
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+    <a href="{{ path('app_reservation_index') }}">back to list</a>
+{% endblock %}

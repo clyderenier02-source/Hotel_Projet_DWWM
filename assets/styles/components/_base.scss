@@ -1,0 +1,42 @@
+@use '../abstract/variables' as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: $font-title;
+    font-size: 2rem;
+}
+
+h2 {
+    color: $gold;
+    font-size: 2.7rem;
+    padding-bottom: 5rem;
+    font-family: $font-title;
+}
+
+p {
+    color: $white;
+    font-size: 2rem;
+    padding-bottom: 3rem;
+    font-family: $font-text;
+}
+
+a {
+    text-decoration: none;
+    color: $white;
+    font-family: $font-text;
+}
+
+main {
+    background: linear-gradient(to left, $leaf-dark, $forest-deep);
+}
+
+h3 {
+    font-size: 4rem;
+    color: $gold;
+    font-family: $font-title;
+}

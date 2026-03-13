@@ -1,0 +1,25 @@
+{{ form_start(form, {
+    attr: { class: 'contactForm__card'}
+}) }}
+    <div class="contactForm__group">
+        {{ form_row(form.subject, {
+            label_attr: { class: 'contactForm__label' },
+        }) }}
+    </div>
+
+    <div class="contactForm__group">
+        {{ form_row(form.email, {
+            label_attr: { class: 'contactForm__label' },
+        }) }}
+    </div>
+
+    <div class="contactForm__group">
+        {{ form_row(form.message, {
+            label_attr: { class: 'contactForm__label' },
+        }) }}
+    </div>
+
+    <div class="contactForm__actions">
+        <button class="contactFrom__btn">{{ button_label|default('Envoyer le message') }}</button>
+    </div>
+{{ form_end(form) }}

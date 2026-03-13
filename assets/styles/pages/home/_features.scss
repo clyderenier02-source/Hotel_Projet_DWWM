@@ -1,0 +1,38 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.homeFeatures {
+    display: flex;
+    justify-content: center;
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        background: linear-gradient($leaf-light, $forest-dark);
+        border: 2px solid $gold;
+        color: $white;
+        width: 45%;
+        height: 50rem;
+        border-radius: 30px;
+        position: relative;
+        margin: -400px auto 0 auto;
+        z-index: 1;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.7rem;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    &__item img {
+        width: 15%;
+        margin-bottom: 1.5rem;
+    }
+}

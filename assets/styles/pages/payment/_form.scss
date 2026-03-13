@@ -1,0 +1,68 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.paymentForm {
+    padding: 5rem 5rem;
+
+    &__roomImage {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & img {
+            width: 100%;
+            margin: 2rem 0;
+        }
+    }
+
+    &__roomName {
+        font-size: 2.5rem;
+        color: $gold;
+
+        & span {
+            color: $white;
+        }
+    }
+
+    &__price {
+        padding: 1.5rem 0;
+    }
+
+    p {
+        padding: 0;
+    }
+
+    &__dates {
+        padding-bottom: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        & span {
+            color: $white;
+            font-size: 3rem;
+            padding: 0 1rem;
+        }
+    }
+
+    &__label {
+        font-size: 2rem;
+        color: $white;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        color: $white;
+        padding: 1rem 0;
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+.custom-input {
+    margin: 0 1rem;
+}

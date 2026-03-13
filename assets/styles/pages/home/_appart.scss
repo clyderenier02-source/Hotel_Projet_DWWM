@@ -1,0 +1,44 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.homeAppart {
+    background-image: 
+    linear-gradient(rgba(30, 52, 44, 0.98), rgba(30, 52, 44, 0.934)),
+    url("/Img-accueil/terasse-extérieur.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__image {
+        margin-top: 7rem;
+        border-radius: 10px;
+        border: 2px solid $gold;
+        margin-bottom: 5rem;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 5rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__button {
+        margin-bottom: 5rem;
+    }
+
+    hr {
+        width: 80%;
+        margin: 1rem;
+    }
+}

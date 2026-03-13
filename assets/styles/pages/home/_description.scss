@@ -1,0 +1,35 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.homeDescription {
+    background-color: $forest-deep;
+    margin-top: -400px;
+    padding-top: 35rem;
+
+    &__hotel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__image {
+        border-radius: 10px;
+        border: 2px solid $gold;
+        margin-bottom: 5rem;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 5rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__button {
+        margin-bottom: 5rem;
+    }
+}

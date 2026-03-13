@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+<section class="account">
+<div class="account__card">
+    <div class="account__header">
+        <p class="account__email">{{ user.email }}</p>
+    </div>
+
+    {% if app.user %}
+    <div class="account__reservations">
+        <div class="account__block">
+            <div class="account__actions">
+                <a class="account__link" href="{{ path('app_reservation_index') }}">Mes réservations</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="account__logout">
+        <a class="account__logoutBtn" href="{{ logout_path() }}">Déconnexion</a>
+    </div>
+    {% endif %}
+</div>
+</section>
+{% endblock %}

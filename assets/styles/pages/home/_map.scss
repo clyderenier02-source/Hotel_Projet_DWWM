@@ -1,0 +1,30 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.homeMap {
+    background-color: $background-map;
+    opacity: 94%;
+
+    &__text {
+        text-align: center;
+        padding: 4rem 5rem;
+    }
+
+    &__button {
+        margin-bottom: 3rem;
+        width: 80%;
+    }
+
+    &__iframe {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__iframe iframe {
+        width: 65%;
+        height: 350px;
+        border-radius: 20px;
+        border: 5px solid $gold;
+        margin-bottom: 10rem;
+    }
+}

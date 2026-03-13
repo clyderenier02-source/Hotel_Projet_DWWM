@@ -1,0 +1,12 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.reservationFlash {
+
+    &__alert {
+    color: $white;
+    font-size: 2rem;
+    padding-top: 3rem;
+    padding-left: 5rem;
+    }
+}

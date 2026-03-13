@@ -1,0 +1,45 @@
+@use "../abstract/variables" as *;
+@use '../components/base' as *;
+
+.pageHero {
+
+    &__breadcrumb {
+        background-color: $forest-dark;
+        display: flex;
+        font-size: 2rem;
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+
+        & p {
+            padding: 0;
+        }
+
+        & a {
+            text-decoration: underline;
+        }
+
+        & span {
+            padding-left: 0.7rem;
+            padding-right: 0.7rem;
+            color: $white;
+        }
+    }
+
+    &__title {
+        background-image: 
+        linear-gradient(rgba(30, 52, 44, 0.934), rgba(30, 52, 44, 0.98)),
+        url("/Img-accueil/fond1.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 55vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        padding-bottom: 5rem;
+        color: $white;
+        font-size: 3rem;
+    }
+}

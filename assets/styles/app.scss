@@ -1,0 +1,38 @@
+// add your SASS styles in this file
+@use 'abstract/variables';
+@use 'abstract/mixins';
+
+@use 'components/base';
+@use 'components/buttons';
+@use 'components/pageHero';
+@use 'components/card';
+@use 'components/authForm';
+
+@use 'layout/header';
+@use 'layout/footer';
+
+@use 'pages/home/hero' as homeHero;
+@use 'pages/home/features' as homeFeatures;
+@use 'pages/home/description' as homeDescription;
+@use 'pages/home/appart' as homeAppart;
+@use 'pages/home/preview' as homePreview;
+@use 'pages/home/map' as homeMap;
+@use 'pages/home/plan' as homePlan;
+
+@use 'pages/room/gallery' as roomGallery;
+@use 'pages/room/details' as roomDetails;
+
+@use 'pages/reservation/index' as reservation;
+@use 'pages/reservation/flash' as reservationFlash;
+@use 'pages/reservation/form' as reservationForm;
+@use 'pages/reservation/new' as reservationNew;
+
+@use 'pages/payment/form' as paymentForm;
+
+@use 'pages/account/profile' as account;
+
+@use 'pages/contact/form' as contactForm;
+
+@use 'pages/opinion/opinion' as opinion;
+
+@use "fonts/fonts";

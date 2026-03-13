@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Room{% endblock %}
+
+{% block body %}
+    <section class="pageHero">
+        <nav class="pageHero__breadcrumb">
+            <a href="/home">Accueil</a>
+            <span>»</span>
+            <a href="/room">Les chambres</a>
+            <span>»</span>
+            <span>{{ room.name }}</span>
+        </nav>
+
+        <h1 class="pageHero__title">{{ room.name }}</h1>
+    </section>
+
+    <section class="roomGallery" id="room-gallery">
+        <div class="roomGallery__wrapper">
+            {% for photo in room.photos %}
+                <img class="roomGallery__image"src="{{ asset('uploads/' ~ photo.filename) }}">
+            {% else %}
+                <p>Aucune photo disponible</p>
+            {% endfor %}
+        </div>
+
+        <button class="roomGallery__prev" id="precedent">&lt;</button>
+        <button class="roomGallery__next" id="suivant">&gt;</button>
+    </section>
+
+    <section class="roomDetails">
+        <div class="roomDetails__content">
+            <h3 class="roomDetails__name">{{ room.name }}</h3>
+            <p class="roomDetails__description">{{ room.description }}</p>
+            <p class="roomDetails__price">{{ room.priceNight }}€ / nuit</p>
+
+            <div class="roomDetails__actions">
+                <a href="{{ path('app_room_index') }}">Retour à la liste</a>
+                <a href="{{ path('app_room_edit', {'id': room.id}) }}">Modifier</a>
+            </div>
+
+            <div class="roomDetails__delete">
+                {{ include('room/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

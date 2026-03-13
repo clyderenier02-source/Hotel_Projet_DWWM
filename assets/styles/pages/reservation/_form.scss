@@ -1,0 +1,171 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.reservationForm {
+    
+    &__wrapper {
+        padding: 0 5rem;
+    }
+
+    &__label {
+        display: block;
+        font-size: 3rem;
+        color: $white;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    &__input {
+        padding: 2rem;
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    &__price {
+        padding-top: 4rem;
+        padding-bottom: 0;
+    }
+
+    &__button {
+        font-size: 2rem;
+        width: 100%;
+        margin: 4rem 0;
+        cursor: pointer;
+    }
+}
+
+.flatpickr-calendar {
+    background: linear-gradient($forest-deep, $leaf-dark) !important;
+    color: $white !important;
+    width: 83% !important;
+    padding: 2rem !important;
+    font-size: 1rem !important;
+}
+
+.dayContainer {
+    color: $white !important;
+    width: 100% !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr);
+    min-width: 100% !important;
+}
+
+.btn-reservation {
+    font-size: 2rem;
+    width: 100%;
+    margin: 4rem 0;
+    cursor: pointer;
+}
+
+.total-reservation {
+    padding-top: 4rem;
+    padding-bottom: 0;
+}
+
+// jour de la semaine
+.flatpickr-weekday {
+    color: $white !important;
+}
+
+// année
+.flatpickr-current-month {
+    color: $white !important;
+}
+
+.flatpickr-day.flatpickr-disabled:hover {
+    border: none !important;
+    background: none !important;
+}
+
+// jour pas encore passé
+.flatpickr-day {
+    color: $white !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: 6rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    line-height: 6rem !important;
+}
+
+.flatpickr-day:hover {
+    border: 1px solid $gold !important;
+}
+
+// date selectionné
+.flatpickr-day.selected {
+    background-color: $leaf-light !important;
+    border: none;
+}
+
+// date d'aujourd'hui
+.flatpickr-day.today {
+    border: 1px solid $gold !important;
+    border-radius: 10px !important;
+}
+
+// slide gauche droite
+.flatpickr-prev-month, 
+.flatpickr-next-month {
+    color: $white !important;
+    fill: $white !important;
+}
+
+// au hover slide $gold 
+.flatpickr-months .flatpickr-prev-month:hover svg,.flatpickr-months .flatpickr-next-month:hover svg {
+    fill: $gold !important;
+}
+
+// hover sur les jour pas encore passé
+.flatpickr-day:hover,.flatpickr-day:focus {
+    border-color: $gold !important;
+    background: $leaf-light !important;
+    color: #fff
+}
+
+// flèche du haut
+.flatpickr-calendar .arrowUp::after {
+    border-bottom: 4px solid white !important;
+}
+
+// flèche du bas
+.flatpickr-calendar .arrowDown::after {
+    border-top: 4px solid white !important;
+}
+
+.flatpickr-rContainer {
+    width: 100% !important;
+}
+
+.flatpickr-days {
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+/* Jours désactivés */
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: rgba(255, 255, 255, 0.2) !important; /* texte grisé */
+    cursor: not-allowed;
+    // background: transparent;
+}
+
+/* Hover */
+.flatpickr-day:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.flatpickr-months {
+    padding-bottom: 2rem !important;
+}
+
+.flatpickr-day.arrival-date {
+    color: $white !important;
+    background-color: $leaf-light !important;
+}

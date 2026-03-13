@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+{{ form_row(form.date_arrived, {
+    attr: { 'data-datepicker-target': 'arrived' }
+}) }}
+
+{{ form_row(form.date_return, {
+    attr: { 'data-datepicker-target': 'return' }
+}) }}
+
+<button class="btn">
+    {{ button_label|default('Save') }}
+</button>
+
+{{ form_end(form) }}

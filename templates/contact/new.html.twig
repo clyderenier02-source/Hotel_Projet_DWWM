@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contact{% endblock %}
+
+{% block body %}
+    <section class="pageHero">
+        <div class="pageHero__breadcrumb">
+            <a href="/">Accueil</a>
+            <span>»</span>
+            <p>Contactez-nous</p>
+        </div>
+
+        <h1 class="pageHero__title">CONTACTEZ-NOUS</h1>
+    </section>
+
+    <section class="contactForm">
+        {{ include('contact/_form.html.twig') }}
+    </section>
+{% endblock %}

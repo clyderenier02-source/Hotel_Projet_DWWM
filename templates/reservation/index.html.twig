@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations{% endblock %}
+
+{% block body %}
+<section class="reservation">
+    <div class="reservation__list">
+
+        {% for reservation in reservations %}
+        <div class="reservation__card">
+            <div class="reservation__info">
+                <div class="reservation__item">
+                    <p class="reservation__label">Date retour :</p>
+                    <p class="reservation__value">{{ reservation.dateReturn ? reservation.dateReturn|date('d/m/Y H:i') : '' }}</p>
+                </div>
+
+                <div class="reservation__item">
+                    <p class="reservation__label">Date arrivée :</p>
+                    <p class="reservation__value">{{ reservation.dateArrived ? reservation.dateArrived|date('d/m/Y H:i') : '' }}</p>
+                </div>
+
+                <div class="reservation__item">
+                    <p class="reservation__label">Prix total :</p>
+                    <p class="reservation__value">{{ reservation.totalPrice }} €</p>
+                </div>
+
+                <div class="reservation__item">
+                    <p class="reservation__label">Statut :</p>
+                    <p class="reservation__value">{{ reservation.status }}</p>
+                </div>
+            </div>
+
+            <div class="reservation__actions">
+                <a class="reservation__btn reservation__btn--show"href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Voir</a>
+                <a class="reservation__btn reservation__btn--edit"href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="reservation__empty">
+            <p>Aucune réservation trouvée</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

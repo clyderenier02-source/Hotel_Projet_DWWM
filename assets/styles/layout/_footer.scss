@@ -1,0 +1,60 @@
+@use '../abstract/variables' as *;
+@use '../components/base' as *;
+
+footer {
+    background-color: $forest-dark;
+}
+
+.footer-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-img img {
+    padding-top: 3rem;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0.7rem;
+}
+
+.footer-follow {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+
+    &_img {
+        display: flex;
+        padding-top: 1rem;
+        gap: 0.7rem;
+    }
+
+    &_img img {
+        width: 50px;
+    }
+}
+
+.footer-follow p {
+    padding: 0;
+}
+
+.footer_mentions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: 2px solid $gold;
+    padding: 2rem;
+    margin-top: 6rem;
+}

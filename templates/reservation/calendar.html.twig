@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation calendar{% endblock %}
+
+{% block body %}
+    <section class="pageHero">
+        <div class="pageHero__breadcrumb">
+            <a href="/">Accueil</a>
+            <span>»</span>
+            <p>Réservation</p>
+        </div>
+
+        <h1 class="pageHero__title">RÉSERVATION</h1>
+    </section>
+
+    <section class="reservationFlash">
+        {% for message in app.flashes('error') %}
+            <div class="reservationFlash__alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </section>
+
+<section class="reservationForm">
+    <div data-controller="datepicker" class="reservationForm__wrapper">
+        {{ form_start(searchform, {
+            action: path('app_reservation_calendar'),
+            method: 'POST',
+            attr: { 'data-turbo': 'false' }
+        }) }}
+
+        <div class="reservationForm__field">
+            <label class="reservationForm__label">Arrivée</label>
+            {{ form_widget(searchform.date_arrived, {
+                attr: {
+                    'data-datepicker-target': 'arrived',
+                    class: 'reservationForm__input',
+                    placeholder: 'Arrivée'
+                }
+            }) }}
+        </div>
+
+        <div class="reservationForm__field">
+            <label class="reservationForm__label">Départ</label>
+            {{ form_widget(searchform.date_return, {
+                attr: {
+                    'data-datepicker-target': 'return',
+                    class: 'reservationForm__input',
+                    placeholder: 'Départ'
+                }
+            }) }}
+        </div>
+
+        <div class="reservationForm__price">
+            <p>Prix / nuit</p>
+        </div>
+
+        <button type="submit" class="reservationForm__button">RÉSERVER</button>
+        {{ form_end(searchform) }}
+    </div>
+</section>
+{% endblock %}

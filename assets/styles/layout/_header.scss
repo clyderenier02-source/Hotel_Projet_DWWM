@@ -1,0 +1,83 @@
+@use '../abstract/variables' as *;
+@use '../components/base' as *;
+
+html, body {
+    overflow-x: hidden;
+}
+
+body.menu-open{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+.header-text {
+    text-align: center;
+    background-color: $forest-dark;
+    color: $white;
+    font-size: 1.5rem;
+    padding: 0.3rem;
+
+    &_container {
+        color: $gold;
+    }
+}
+
+.navbar{
+    background-color: $forest-deep;
+
+    .navbar-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin: 0 15px;
+
+        .nav-logo img {
+            width: 220px;
+            display: inline-block;
+        }
+
+        .nav-menu{
+            position: fixed;
+            top: 170px;
+            left: 0;
+            right: 0;
+            background-color: $forest-deep;
+            list-style: none;
+            padding: 0;
+            height: 100vh;
+            z-index: 2;
+            opacity: 0.89;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateX(100%);
+            transition: all 0.4s ease;
+
+            &.show{
+                transform: translateX(0);
+            }
+            .nav-item{
+                padding: 3rem;
+                display: flex;
+                justify-content: center;
+                
+                &:hover{
+                    background-color: $forest-dark;
+                    width: 100%;
+                }
+            }
+        }
+        
+        a{
+            font-size: 3rem;
+        }
+        .nav-button{
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            margin: 2rem;
+        }
+    }  
+}
