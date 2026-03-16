@@ -1,0 +1,44 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block title %}Hello Admin/RoomController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <section class="pageHero">
+        <div class="pageHero__breadcrumb">
+            <a href="/">Accueil</a>
+            <span>»</span>
+            <p>Les Chambres</p>
+        </div>
+
+        <h1 class="pageHero__title">LES CHAMBRES</h1>
+    </section>
+
+        <section class="roomList">
+            {% for room in rooms %}
+
+            <div class="card">
+                <div class="card__image">
+                    {% if room.photos|length > 0 %}
+                        <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}">
+                    {% endif %}
+                </div>
+
+                <div class="card__content">
+                    <h3 class="card__name">{{ room.name }}</h3>
+                    <p class="card__description">{{ room.description }}</p>
+                    <p class="roomCard__price">{{ room.priceNight }}€ / nuit</p>
+
+                    <div class="card__actions">
+                        <a href="{{ path('app_room_show', {'id': room.id}) }}">Découvrir</a>
+                        <a href="{{ path('app_room_edit', {'id': room.id}) }}">Edit</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        <div class="card__actions">
+            <a href="{{ path('app_room_new') }}">Create new</a>
+        </div>
+{% endblock %}

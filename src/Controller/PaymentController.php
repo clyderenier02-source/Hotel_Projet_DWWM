@@ -17,57 +17,13 @@ use App\Entity\Room;
 #[Route('/payment')]
 final class PaymentController extends AbstractController
 {
-    #[Route('/{id}', name: 'app_payment_index', methods: ['GET', 'POST'])]
-    public function index(int $id, Request $request, RoomRepository $roomRepository, PaymentRepository $paymentRepository, EntityManagerInterface $entityManager): Response
+    #[Route('/index', name: 'app_payment_index', methods: ['GET', 'POST'])]
+    public function index(PaymentRepository $paymentRepository): Response
     {   
-        $form = $this->createForm(PaymentType::class);
-        $form->handleRequest($request);
-
-        // On récupère l'id de la room
-        $room = $roomRepository->find($id);
-
-        // Récupération de la session de l'utilisateur
-        $session = $request->getSession();
-
-        // Récupération des date depuis la session
-        $dateArrived = $session->get('date_arrived');
-        $dateReturn = $session->get('date_return');
-
-        // On initialise a 0 la variables pour stocker le prix total
-        $total = 0;
-        
-        // Vérifie que la date arrivé date retour et la chambre existe
-        if($dateArrived && $dateReturn && $room) {
-
-            // Crée des objets DateTime a partir des dates fournies
-            $start = new \DateTime($dateArrived);
-            $end = new \DateTime($dateReturn);
-
-            // Calcul la difference entre les deux dates
-            $interval = $start->diff($end);
-
-            // Récupère le nombre total de jours (nuits)
-            $nights = $interval->days;
-
-            // Calcul le prix total nombre de nuits x prix par nuit de la chambre
-            $total = $nights * $room->getPriceNight();
-        }
-
-        if($form->isSubmitted() && $form->isValid()) {
-            
-            $payment = $form->getData();
-            $payment->setTotal($total);
-
-            $entityManager->persist($payment);
-            $entityManager->flush();
-        }
+        $payment = $paymentRepository->findAll();
 
         return $this->render('payment/index.html.twig', [
-            'form' => $form->createView(),
-            'arrived' => $dateArrived,
-            'return' => $dateReturn,
-            'room' => $room,
-            'price' => $total
+            'payments' => $payment
         ]);
     }
 
@@ -93,35 +49,47 @@ final class PaymentController extends AbstractController
         $interval = $start->diff($end);
         $nights = $interval->days;
 
-        if($nights <= 0){
-            throw new \Exception("Dates invalides");
-        }
+        $form = $this->createForm(PaymentType::class);
+        $form->handleRequest($request);
 
         // Prix total
         $total = $nights * $room->getPriceNight();
 
-        // Reservation
-        $reservation = new Reservation();
-        $reservation->setUser($this->getUser());
-        $reservation->setRoom($room);
-        $reservation->setDateArrived($start);
-        $reservation->setDateReturn($end);
-        $reservation->setTotalPrice($total);
-        $reservation->setStatus('paid');
+        if($form->isSubmitted() && $form->isValid()) {
 
-        // Payment
-        $payment = new Payment();
-        $payment->setStatus('paid');
-        $payment->setDatePayment(new \DateTime());
-        $payment->setTotal($total);
-        $payment->setMode("card"); // ULTRA IMPORTANT
-        $payment->setReservation($reservation);
+            $mode = $form->get('mode')->getData();
 
-        $entityManager->persist($reservation);
-        $entityManager->persist($payment);
-        $entityManager->flush();
+            $status = 'paid';
 
-        return $this->redirectToRoute('app_account');
+            $reservation = new Reservation();
+            $reservation->setUser($this->getUser());
+            $reservation->setRoom($room);
+            $reservation->setDateArrived($start);
+            $reservation->setDateReturn($end);
+            $reservation->setTotalPrice($total);
+            $reservation->setStatus($status);
+
+            $payment = new Payment();
+            $payment->setStatus($status);
+            $payment->setDatePayment(new \DateTime());
+            $payment->setTotal($total);
+            $payment->setMode($mode);
+            $payment->setReservation($reservation);
+
+            $entityManager->persist($reservation);
+            $entityManager->persist($payment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_account');
+        }
+
+        return $this->render('payment/new.html.twig', [
+            'form' => $form->createView(),
+            'arrived' => $dateArrived,
+            'return' => $dateReturn,
+            'room' => $room,
+            'price' => $total
+        ]);
     }
 
     #[Route('/{id}', name: 'app_payment_show', methods: ['GET'])]

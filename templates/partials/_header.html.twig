@@ -3,8 +3,15 @@
     <nav class="navbar" id="main-navbar">
         <div class="navbar-container">
             <a href="" class="nav-logo"><img src="{{ asset('Img-accueil/logo_mobile.png') }}" alt="logo Eden Palm"></a>
-            <div class="nav-button">
-                <img src="{{ asset('svg/bars-solid_test.svg') }}" alt="">
+            <div class="nav-admin-user">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="nav-admin">
+                        <li><a href="/admin/dashboard">Back office</a></li>
+                    </div>
+                {% endif %}
+                <div class="nav-button">
+                    <img src="{{ asset('svg/bars-solid_test.svg') }}" alt="">
+                </div>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item active"><a href="/">Accueil</a></li>
@@ -13,10 +20,12 @@
                 <li class="nav-item"><a href="/reservation/calendar">Réserver</a></li>
                 <li class="nav-item"><a href="/opinion">Avis</a></li>
                 <li class="nav-item"><a href="/contact/new">Contactez-nous</a></li>
-                <li class="nav-item"><a href="/account">Mon profil</a></li>
-                <li class="nav-item"><a href="/opinion">Avis</a></li>
-                <li class="nav-item"><a href="/login">Se connecter</a></li>
-                <li class="nav-item"><a href="/register">S'inscire</a></li>
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item"><a href="/login">Se connecter</a></li>
+                    <li class="nav-item"><a href="/register">S'inscire</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="/account">Mon profil</a></li>
+                {% endif %}
                 <li class="nav-item"><a href="/photo">Photo</a></li>
             </ul>
         </div>

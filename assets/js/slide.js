@@ -1,33 +1,35 @@
-const gallery = document.querySelector(".roomGallery__wrapper");
-const btnSuivant = document.getElementById("suivant");
-const btnPrecedent = document.getElementById("precedent");
+document.addEventListener('turbo:load', () => {
 
-const images = document.querySelectorAll(".roomGallery__wrapper img");
+    const gallery = document.querySelector(".roomGallery__wrapper");
+    const btnSuivant = document.getElementById("suivant");
+    const btnPrecedent = document.getElementById("precedent");
 
-let index = 0;
+    const images = document.querySelectorAll(".roomGallery__wrapper img");
 
-if(btnSuivant && btnPrecedent && gallery && images.length > 0){
+    let index = 0;
 
-    btnSuivant.addEventListener("click", () => {
+    if(btnSuivant && btnPrecedent && gallery && images.length > 0){
 
-        if(index < images.length - 1){
-            index++;
-        }
+        btnSuivant.addEventListener("click", () => {
 
-        const width = images[0].offsetWidth;
-        gallery.style.transform = `translateX(-${index * width}px)`;
+            if(index < images.length - 1){
+                index++;
+            }
 
-    });
+            const width = images[0].offsetWidth;
+            gallery.style.transform = `translateX(-${index * width}px)`;
 
-    btnPrecedent.addEventListener("click", () => {
+        });
 
-        if(index > 0){
-            index--;
-        }
+        btnPrecedent.addEventListener("click", () => {
 
-        const width = images[0].offsetWidth;
-        gallery.style.transform = `translateX(-${index * width}px)`;
+            if(index > 0){
+                index--;
+            }
 
-    });
+            const width = images[0].offsetWidth;
+            gallery.style.transform = `translateX(-${index * width}px)`;
 
-}
+        });
+    }
+});

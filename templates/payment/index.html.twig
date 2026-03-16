@@ -3,52 +3,7 @@
 {% block title %}Payment index{% endblock %}
 
 {% block body %}
-    {{ form_start(form, {
-        action: path('app_payment_new', {id: room.id}),
-        method: 'POST',
-    }) }}
-        <section class="paymentForm">
-            <h3 class="paymentForm__title">Résumé du séjour</h3>
-
-            <section class="paymentForm__room">
-                <div class="paymentForm__roomImage">
-                    {% if room.photos|length > 0 %}
-                        <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}">
-                    {% endif %}
-                </div>
-
-                <h4 class="paymentForm__roomName"><span>Chambre : </span>{{ room.name }}</h4>
-            </section>
-
-
-            <section class="paymentForm__price">
-                <p>Prix total : {{ price }} €</p>
-            </section>
-
-
-            <section class="paymentForm__dates">
-                <p>Dates : {{ arrived|date('d-m-Y') }}</p>
-                <span>/</span>
-                <p>{{ return|date('d-m-Y') }}</p>
-            </section>
-
-
-            <section class="paymentForm__payment">
-                {{ form_row(form.mode, {
-                    label: 'Mode de paiement',
-                    label_attr: { class: 'paymentForm__label' },
-                    attr: {
-                        class: 'paymentForm__input'
-                    }
-                }) }}
-
-                <button class="paymentForm__submit">PAYER MAINTENANT</button>
-            </section>
-        </section>
-    {{ form_end(form) }}
-    
-
-    {# <table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -78,7 +33,6 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table> #}
-
+    </table>
     {# <a href="{{ path('app_payment_new', {id: room.id}) }}">Create new</a> #}
 {% endblock %}

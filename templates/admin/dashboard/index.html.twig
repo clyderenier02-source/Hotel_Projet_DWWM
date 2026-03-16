@@ -1,20 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
 {% block title %}Hello Admin/DashboardController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/clyde/Documents/Forma-Arinfo_2025-2026/Projet pro DWWM/Hotel_Projet_DWWM/Eden_Palm/src/Controller/Admin/DashboardController.php</code></li>
-        <li>Your template at <code>C:/Users/clyde/Documents/Forma-Arinfo_2025-2026/Projet pro DWWM/Hotel_Projet_DWWM/Eden_Palm/templates/admin/dashboard/index.html.twig</code></li>
-    </ul>
-</div>
+<section class="dashboard">
+    <div class="dashboard__card">
+        <h4>Réservation</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <div class="dashboard__card">
+        <h4>Chambre</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <div class="dashboard__card">
+        <h4>Service</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <div class="dashboard__card">
+        <h4>Avis</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <div class="dashboard__card">
+        <h4>Contact</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+    <div class="dashboard__card">
+        <h4>Photo</h4>
+        <i class="fa-solid fa-arrow-down"></i>
+    </div>
+</section>
 {% endblock %}

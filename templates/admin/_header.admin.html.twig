@@ -1,26 +1,25 @@
-{{% extends "base.admin.html.twig" %}}
-
-{% block title %}Header Admin{% block title %}
-
-{% block body %}
-    <header>
+<header>
     <p class="header-text"><span class="header-text_container">Nouveau projet immobilier</span> - Découvrez votre futur chez vous</p>
     <nav class="navbar" id="main-navbar">
         <div class="navbar-container">
             <a href="" class="nav-logo"><img src="{{ asset('Img-accueil/logo_mobile.png') }}" alt="logo Eden Palm"></a>
-            <div class="nav-button">
-                <img src="{{ asset('svg/bars-solid_test.svg') }}" alt="">
+            <div class="nav-admin-user">
+                <div class="nav-admin">
+                    <li><a href="/">Quitter</a></li>
+                </div>
+                <div class="nav-button">
+                    <img src="{{ asset('svg/bars-solid_test.svg') }}" alt="">
+                </div>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="/room">Chambres</a></li>
+                <li class="nav-item"><a href="/admin/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/admin/room">Chambres</a></li>
                 <li class="nav-item"><a href="/service">Service</a></li>
                 <li class="nav-item"><a href="/reservation/calendar">Réserver</a></li>
                 <li class="nav-item"><a href="/opinion">Avis</a></li>
                 <li class="nav-item"><a href="/contact/new">Contactez-nous</a></li>
-                <li class="nav-item"><a href="/account">Mon profil</a></li>
                 <li class="nav-item"><a href="/photo">Photo</a></li> 
             </ul>
         </div>
     </nav>
 </header>
-{% endblock %}
