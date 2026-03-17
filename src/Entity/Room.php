@@ -22,6 +22,9 @@ class Room
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description_courte = null;
+
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price_night = null;
 
@@ -68,6 +71,18 @@ class Room
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescriptionCourte(): ?string
+    {
+        return $this->description_courte;
+    }
+
+    public function setDescriptionCourte(string $description_courte): static
+    {
+        $this->description_courte = $description_courte;
 
         return $this;
     }

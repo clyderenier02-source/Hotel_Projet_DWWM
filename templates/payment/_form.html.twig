@@ -25,6 +25,11 @@
             <p>{{ return|date('d-m-Y') }}</p>
         </section>
 
+        <section class="paymentForm__checkin">
+            <p>Arrivé : à partir de 14h00</p>
+            <p>Départ : avant 11h00</p>
+        </section>
+
         <section class="paymentForm__payment">
             {{ form_row(form.mode, {
                 label: 'Mode de paiement',

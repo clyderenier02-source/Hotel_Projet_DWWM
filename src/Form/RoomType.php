@@ -14,6 +14,7 @@ class RoomType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('description_courte')
             ->add('price_night')
         ;
     }

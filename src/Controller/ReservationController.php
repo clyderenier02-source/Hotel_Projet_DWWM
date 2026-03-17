@@ -79,6 +79,12 @@ final class ReservationController extends AbstractController
         $dateArrived = $session->get('date_arrived');
         $dateReturn = $session->get('date_return');
 
+        $dateArrived = \DateTime::createFromFormat('d-m-Y', $dateArrived);
+        $dateReturn = \DateTime::createFromFormat('d-m-Y', $dateReturn);
+
+        $dateArrived->setTime(0, 0, 0);
+        $dateReturn->setTime(0, 0, 0);
+
         // Vérification des types Datetime
         if ($dateArrived instanceof \DateTimeInterface) {
             $reservation->setDateArrived($dateArrived);
@@ -101,7 +107,7 @@ final class ReservationController extends AbstractController
         }
 
         return $this->render('reservation/new.html.twig', [
-            'rooms' => $roomRepository->findAll(),
+            'rooms' => $roomRepository->findAvailableRooms($dateArrived, $dateReturn),
             'form' => $form->createView(),
             'reservation' => $reservation,
             'arrived' => $dateArrived,

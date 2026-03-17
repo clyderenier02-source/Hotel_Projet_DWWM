@@ -23,7 +23,7 @@
 
                 <div class="card__content">
                     <h3 class="card__name">{{ room.name }}</h3>
-                    <p class="roomCard__price">{{ room.priceNight }}€ / nuit</p>
+                    <p class="roomCard__price">{{ room.priceNight|round }}€ / nuit</p>
 
                     <div class="card__actions">
                         <a href="{{ path('app_payment_new', {'id': room.id}) }}">Réserver</a>
@@ -34,22 +34,25 @@
                 </div>
             </div>
 
-            {# Modal #}
+            {# modal #}
             <div id="modal__{{ room.id }}" class="modal">
 
                 {# modal content #}
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-
-                    <h3>{{ room.name }}</h3>
-                    <p>{{ room.priceNight }}€ / nuit</p>
-
-                    <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}" alt="Photo {{ room.name }}">
-                    
+                <div class="modal__content">
+                    <span class="modal__close">&times;</span>
+                    <div class="modal__img">
+                        <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}" alt="Photo {{ room.name }}">
+                    </div>
+                    <div class="modal__card">
+                        <h3>{{ room.name }}</h3>
+                        <p>{{ room.descriptionCourte }}</p>
+                        <p>{{ room.priceNight|round }}€ / nuit</p>
+                    </div>
+                    <div class="card__actions">
+                        <a href="{{ path('app_payment_new', {'id': room.id}) }}">Réserver</a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </section>
-
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
 {% endblock %}

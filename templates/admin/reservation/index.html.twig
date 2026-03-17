@@ -10,13 +10,13 @@
         <div class="reservation__card">
             <div class="reservation__info">
                 <div class="reservation__item">
-                    <p class="reservation__label">Date retour :</p>
-                    <p class="reservation__value">{{ reservation.dateReturn ? reservation.dateReturn|date('d/m/Y H:i') : '' }}</p>
+                    <p class="reservation__label">Date arrivée :</p>
+                    <p class="reservation__value">{{ reservation.dateArrived|date('d/m/Y') }} à partir de 14h00</p>
                 </div>
 
                 <div class="reservation__item">
-                    <p class="reservation__label">Date arrivée :</p>
-                    <p class="reservation__value">{{ reservation.dateArrived ? reservation.dateArrived|date('d/m/Y H:i') : '' }}</p>
+                    <p class="reservation__label">Date retour :</p>
+                    <p class="reservation__value">{{ reservation.dateReturn|date('d/m/Y') }} avant 11h00</p>
                 </div>
 
                 <div class="reservation__item">

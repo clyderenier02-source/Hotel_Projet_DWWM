@@ -46,6 +46,16 @@
         }
     }
 
+    &__checkin {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        
+        & p {
+            padding: 1rem 0 ;
+        }
+    }
+
     &__label {
         font-size: 2rem;
         color: $white;

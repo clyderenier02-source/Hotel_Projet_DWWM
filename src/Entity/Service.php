@@ -25,8 +25,8 @@ class Service
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 4, scale: 2)]
-    private ?string $time = null;
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $time = null;
 
     /**
      * @var Collection<int, Photo>
@@ -80,12 +80,12 @@ class Service
         return $this;
     }
 
-    public function getTime(): ?string
+    public function getTime(): ?int
     {
         return $this->time;
     }
 
-    public function setTime(string $time): static
+    public function setTime(int $time): static
     {
         $this->time = $time;
 

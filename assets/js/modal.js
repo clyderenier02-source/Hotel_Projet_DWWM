@@ -5,12 +5,14 @@ document.addEventListener("turbo:load", () => {
     myBtn.forEach(btn => {
         btn.addEventListener("click", () => {
             const modal = document.getElementById(btn.dataset.modal);
-
-            modal.style.display = "block";
+            
+            if(modal) {
+                modal.style.display = "block";
+            }
         })
     });
 
-    const btnClose = document.querySelectorAll(".close");
+    const btnClose = document.querySelectorAll(".modal__close");
 
     btnClose.forEach(close => {
         close.addEventListener("click", () => {

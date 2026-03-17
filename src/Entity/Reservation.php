@@ -15,10 +15,10 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'date')]
     private ?\DateTime $date_return = null;
     
-    #[ORM\Column]
+    #[ORM\Column(type: 'date')]
     private ?\DateTime $date_arrived = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]

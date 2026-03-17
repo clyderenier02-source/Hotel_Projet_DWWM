@@ -23,8 +23,12 @@
             <div class="card__content">
                 <h3 class="card__name">{{ service.name }}</h3>
                 <p class="card__description">{{ service.description }}</p>
-                <p class="roomCard__price">{{ service.price }}€</p>
-                <p>{{ service.time }}h</p>
+                <p class="roomCard__price">{{ service.price|round }}€</p>
+                {% if service.time < 60 %}
+                    <p>{{ service.time }}min</p>
+                {% else %}
+                    <p>{{ service.time / 60 }}h</p>
+                {% endif %}
 
                 <div class="card__actions">
                     <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
