@@ -11,7 +11,6 @@ final class AccountController extends AbstractController
     #[Route('/account', name: 'app_account', methods: ['GET', 'POST'])]
     public function index(): Response
     {
-        // Sécurité
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
 

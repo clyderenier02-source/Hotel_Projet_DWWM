@@ -4,29 +4,34 @@
 
 {% block body %}
 <section class="dashboard">
-    <div class="dashboard__card">
+    <a href="{{ asset('/admin/reservation') }}" class="dashboard__card">
         <h4>Réservation</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
-    <div class="dashboard__card">
+    </a>
+
+    <a href="{{ asset('/admin/room') }}" class="dashboard__card">
         <h4>Chambre</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
-    <div class="dashboard__card">
+    </a>
+
+    <a href="{{ asset('/admin/service') }}" class="dashboard__card">
         <h4>Service</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
-    <div class="dashboard__card">
+    </a>
+
+    <a href="{{ asset('/admin/room') }}" class="dashboard__card">
         <h4>Avis</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
-    <div class="dashboard__card">
+    </a>
+
+    <a href="{{ asset('/admin/room') }}" class="dashboard__card">
         <h4>Contact</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
-    <div class="dashboard__card">
+    </a>
+
+    <a href="{{ asset('/admin/room') }}" class="dashboard__card">
         <h4>Photo</h4>
         <i class="fa-solid fa-arrow-down"></i>
-    </div>
+    </a>
 </section>
 {% endblock %}
