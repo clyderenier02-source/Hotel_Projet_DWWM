@@ -56,6 +56,8 @@ final class PaymentController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
 
+            $this->addFlash('success', 'Votre réservations a été pris en compte avec succes');
+
             $mode = $form->get('mode')->getData();
 
             $status = 'paid';

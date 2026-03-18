@@ -10,18 +10,23 @@
     </div>
 
     {% if app.user %}
-    <div class="account__reservations">
-        <div class="account__block">
-            <div class="account__actions">
-                <a class="account__link" href="{{ path('app_reservation_index') }}">Mes réservations</a>
+        {% for message in app.flashes('success') %}
+            <div>
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+        <div class="account__reservations">
+            <div class="account__block">
+                <div class="account__actions">
+                    <a class="account__link" href="{{ path('app_reservation_index') }}">Mes réservations</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="account__logout">
-        <a class="account__logoutBtn" href="{{ logout_path() }}">Déconnexion</a>
+        <div class="account__logout">
+            <a class="account__logoutBtn" href="{{ logout_path() }}">Déconnexion</a>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
-</div>
 </section>
 {% endblock %}
