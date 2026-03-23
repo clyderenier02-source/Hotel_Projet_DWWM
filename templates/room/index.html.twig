@@ -26,7 +26,7 @@
                 <div class="card__content">
                     <h3 class="card__name">{{ room.name }}</h3>
                     <p class="card__description">{{ room.description }}</p>
-                    <p class="roomCard__price">{{ room.priceNight }}€ / nuit</p>
+                    <p class="roomCard__price">{{ room.priceNight|round }}€ / nuit</p>
 
                     <div class="card__actions">
                         <a href="{{ path('app_room_show', {'id': room.id}) }}">Découvrir</a>

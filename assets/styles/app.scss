@@ -33,7 +33,8 @@
 
 @use 'pages/contact/form' as contactForm;
 
-@use 'pages/opinion/opinion' as opinion;
+@use 'pages/opinion/index' as review;
+@use 'pages/opinion/new' as opinionForm;
 
 @use 'pagesAdmin/dashboardCard' as dashboard;
 

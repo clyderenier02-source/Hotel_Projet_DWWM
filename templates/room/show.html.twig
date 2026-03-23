@@ -32,7 +32,7 @@
         <div class="roomDetails__content">
             <h3 class="roomDetails__name">{{ room.name }}</h3>
             <p class="roomDetails__description">{{ room.description }}</p>
-            <p class="roomDetails__price">{{ room.priceNight }}€ / nuit</p>
+            <p class="roomDetails__price">{{ room.priceNight|round }}€ / nuit</p>
 
             <div class="roomDetails__actions">
                 <a href="{{ path('app_room_index') }}">Retour à la liste</a>

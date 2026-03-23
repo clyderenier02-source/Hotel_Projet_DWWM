@@ -1,0 +1,74 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base' as *;
+
+.opinionHome {
+    padding: 8rem 3rem 3rem 3rem;
+
+    &__content {
+        padding: 3rem;
+        background-color: $forest-dark;
+        border-radius: 15px;
+
+        & p {
+            padding: 0;
+        }
+    }
+
+    &__meta {
+        padding-bottom: 2rem;
+
+        & p {
+            padding-bottom: 1rem;
+        }
+
+        & span {
+            font-size: 2rem;
+            color: $gold;
+        }
+    }
+
+    &__dates {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    &__stars {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    &__star {
+        height: 2rem;
+
+        &--filled {
+            filter: brightness(0) saturate(100%) invert(72%) sepia(35%) saturate(600%) hue-rotate(355deg) brightness(95%); // $gold
+        }
+
+        &--empty {
+            filter: brightness(0) saturate(100%) invert(99%) sepia(100%) saturate(19%) hue-rotate(279deg) brightness(104%) contrast(100%);
+        }
+    }
+
+    &__btn {
+        margin-top: 2rem;
+        text-align: center;
+        padding: 2rem;
+        background-color: $gold;
+        border-radius: 15px;
+
+        & p {
+            padding: 0;
+        }
+    }
+}
+
+.flash {
+    color: $white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}

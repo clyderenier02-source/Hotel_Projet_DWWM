@@ -1,7 +1,7 @@
 document.addEventListener('turbo:load', () => {
 
-    const stars      = document.querySelectorAll('.opinion__star');
-    const noteInput  = document.getElementById('opinion_note');
+    const stars = document.querySelectorAll('.opinionForm__star');
+    const noteInput = document.getElementById('opinion_note');
 
     // On n'est pas sur la page opinion → on arrête
     if (!stars.length || !noteInput) return;
@@ -19,10 +19,10 @@ document.addEventListener('turbo:load', () => {
         btnSubmit.disabled = !ready;
 
         if (ready) {
-            btnSubmit.classList.add('opinion__submit--ready');
+            btnSubmit.classList.add('opinionForm__submit--ready');
             btnSubmit.textContent = 'Envoyer mon avis';
         } else {
-            btnSubmit.classList.remove('opinion__submit--ready');
+            btnSubmit.classList.remove('opinionForm__submit--ready');
             btnSubmit.textContent = 'Complétez le formulaire';
         }
     }
@@ -30,10 +30,10 @@ document.addEventListener('turbo:load', () => {
     function highlightStars(value, type) {
         stars.forEach(s => {
             const v = parseInt(s.dataset.value);
-            s.classList.remove('opinion__star--hovered', 'opinion__star--selected');
+            s.classList.remove('opinionForm__star--hovered', 'opinionForm__star--selected');
 
-            if (type === 'hover'  && v <= value) s.classList.add('opinion__star--hovered');
-            if (type === 'select' && v <= value) s.classList.add('opinion__star--selected');
+            if (type === 'hover'  && v <= value) s.classList.add('opinionForm__star--hovered');
+            if (type === 'select' && v <= value) s.classList.add('opinionForm__star--selected');
         });
     }
 
@@ -68,7 +68,7 @@ document.addEventListener('turbo:load', () => {
 
     textarea.addEventListener('input', () => {
         charCount.textContent = textarea.value.length;
-        charWrap.classList.toggle('opinion__counter--limit', textarea.value.length > 450);
+        charWrap.classList.toggle('opinionForm__counter--limit', textarea.value.length > 450);
         checkReady();
     });
 });

@@ -3,13 +3,12 @@
 {% block title %}Avis clients{% endblock %}
 
 {% block body %}
-<div class="reviews-wrapper">
-
-    <div class="reviews-header">
-        <h1>Avis de nos clients</h1>
-        {% if app.user %}
-            <a href="{{ path('app_opinion_new') }}" class="btn-write">Laisser un avis</a>
-        {% endif %}
+<div class="opinionHome">
+    <div class="opinionHome__header">
+        <h2>Avis de nos clients</h2>
+        {% for message in app.flashes('success') %}
+            <p>{{ message }}</p>
+        {% endfor %}
     </div>
 
     {% for flash in app.flashes('success') %}
@@ -21,30 +20,38 @@
     {% endfor %}
 
     {% if opinions is empty %}
-        <p class="no-reviews">Aucun avis pour le moment. Soyez le premier !</p>
+        <p class="opinionHome__no-reviews">Aucun avis pour le moment. Soyez le premier !</p>
     {% else %}
-        <div class="reviews-grid">
+        <div class="opinionHome__card">
             {% for opinion in opinions %}
-                <div class="review-card">
-                    <div class="review-stars">
-                        {% for i in 1..5 %}
-                            {% if i <= opinion.note %}
-                                <img src="{{ asset('svg/star.svg') }}" class="star star--filled" alt="étoile">
-                            {% else %}
-                                <img src="{{ asset('svg/star.svg') }}" class="star star--empty" alt="étoile vide">
-                            {% endif %}
-                        {% endfor %}
-                        <span class="review-note">{{ opinion.note }}/5</span>
+                <div class="opinionHome__content">
+                    <div class="opinionHome__dates">
+                        <p class="opinionHome__date">{{ opinion.dateSend|date('d/m/Y') }}</p>
+                        <div class="opinionHome__stars">
+                            {% for i in 1..5 %}
+                                {% if i <= opinion.note %}
+                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--filled" alt="étoile">
+                                {% else %}
+                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--empty" alt="étoile vide">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <p class="review-comment">{{ opinion.comment }}</p>
-                    <div class="review-meta">
-                        <span class="review-author">{{ opinion.reservation.user.email }}</span>
-                        <span class="review-date">{{ opinion.dateSend|date('d/m/Y') }}</span>
+                    <div class="opinionHome__meta">
+                        <p class="opinionHome__author">{{ opinion.reservation.user.email }}</p>
+                        <span class="opinionHome__note">{{ opinion.note }}/5</span>
                     </div>
+                    <p class="opinionHome__comment">{{ opinion.comment }}</p>
                 </div>
             {% endfor %}
         </div>
     {% endif %}
-
+    {% if app.user %}
+        <a href="{{ path('app_opinion_new') }}" class="opinionHome__write">
+            <div class="opinionHome__btn">
+                <p>Laisser un avis</p>
+            </div>
+        </a>
+    {% endif %}
 </div>
 {% endblock %}

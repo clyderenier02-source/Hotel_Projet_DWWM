@@ -34,11 +34,15 @@ final class OpinionController extends AbstractController
         $form->handleRequest($request);
 
         if (!$reservation || $reservation->getOpinion() !== null) {
+
             $this->addFlash('error', 'Vous devez être en séjour et ne pas avoir déjà laissé un avis.');
+
             return $this->redirectToRoute('app_opinion_index');
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->addFlash('success', 'Votre avis a bien été pris en compte merci beaucoup !');
 
             $opinion->setDateSend( new \DateTime());
             $opinion->setReservation($reservation);
