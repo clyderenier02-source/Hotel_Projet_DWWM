@@ -31,14 +31,14 @@
             display: block;
             width: 100%;
             height: 1px;
-            background-color: #333;
+            background-color: #fffefe;
             margin-top: 3rem;
             margin-bottom: 10px;
         }
     }
 
     &__card {
-        background-color: red;
+        background-color: $white;
         margin-bottom: 2rem;
         padding: 2rem;
         border-radius: 15px;

@@ -1,12 +1,11 @@
-@use "../abstract/variables" as *;
-@use '../components/base.admin' as *;
+@use "../../abstract/variables" as *;
+@use '../../components/base.admin' as *;
 
 .dashboard {
     padding: 5rem;
 
     &__card {
         background-color: $white;
-        box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.4);
         border-radius: 15px;
         margin-bottom: 4rem;
         display: flex;
@@ -22,8 +21,8 @@
         & i {
             transform: rotate(-90deg);
             font-size: 3rem;
-            color: $gold;
-            background-color: $forest-deep;
+            color: black;
+            background-color: $gold;
             border-radius: 50%;
             height: 100px;
             padding: 3rem 2rem;

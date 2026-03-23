@@ -1,5 +1,5 @@
-@use '../abstract/variables' as *;
-@use '../components/base' as *;
+@use "../../abstract/variables" as *;
+@use '../../components/base.admin' as *;
 
 html, body {
     overflow-x: hidden;
@@ -11,12 +11,10 @@ body.menu-open{
     width: 100%;
 }
 
-.header-front {
+.header-admin {
 
     .header-text {
         text-align: center;
-        background-color: $forest-dark;
-        color: $white;
         font-size: 1.5rem;
         padding: 0.3rem;
 
@@ -26,7 +24,6 @@ body.menu-open{
     }
 
     .navbar {
-        background-color: $forest-deep;
 
         .navbar-container{
             display: flex;
@@ -45,7 +42,7 @@ body.menu-open{
                 top: 170px;
                 left: 0;
                 right: 0;
-                background-color: $forest-deep;
+                background-color: #f4f6f9;
                 list-style: none;
                 padding: 0;
                 height: 100vh;
@@ -66,7 +63,7 @@ body.menu-open{
                     justify-content: center;
                     
                     &:hover{
-                        background-color: $forest-dark;
+                        background-color: #3333;
                         width: 100%;
                     }
                 }
@@ -74,6 +71,7 @@ body.menu-open{
             
             a   {
                 font-size: 3rem;
+                color: black;
             }
 
             .nav-button{
@@ -97,7 +95,7 @@ body.menu-open{
 
             & a {
                 font-size: 1.5rem;
-                color: $forest-dark;
+                color: $white;
             }
         }
     }

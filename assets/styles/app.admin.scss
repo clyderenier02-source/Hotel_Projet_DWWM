@@ -2,11 +2,11 @@
 @use 'abstract/variables';
 @use 'abstract/mixins';
 
-@use 'layout/header';
+@use 'pagesAdmin/layout/header.admin';
 
 @use 'components/base.admin';
 
-@use 'pagesAdmin/dashboardCard' as dashboard;
+@use 'pagesAdmin/dashboard/dashboardCard' as dashboard;
 
 @use 'pagesAdmin/room/adminIndex' as admin-room;
 
