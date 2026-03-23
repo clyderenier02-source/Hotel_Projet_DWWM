@@ -1,44 +1,30 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Hello Admin/RoomController!{% endblock %}
+{% block title %}Admin - Rooms{% endblock %}
 
 {% block body %}
-
-<div class="example-wrapper">
-    <section class="pageHero">
-        <div class="pageHero__breadcrumb">
-            <a href="/">Accueil</a>
-            <span>»</span>
-            <p>Les Chambres</p>
+<section class="admin-room">
+    <div class="admin-room__header">
+        <div class="admin-room__header-sub">
+            <h4>Chambres</h4>
+        <a href="{{ path('app_room_new') }}">Create new</a>
         </div>
+    </div>
+    {% for room in rooms %}
+        <div class="admin-room__card">
+            <div class="admin-room__card-content">
+                <h3 class="admin-room__card-name">{{ room.name }}</h3>
+                <p class="admin-room__card-description">{{ room.description | slice(0, 80) ~ '...' }}</p>
 
-        <h1 class="pageHero__title">LES CHAMBRES</h1>
-    </section>
-
-        <section class="roomList">
-            {% for room in rooms %}
-
-            <div class="card">
-                <div class="card__image">
-                    {% if room.photos|length > 0 %}
-                        <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}">
-                    {% endif %}
-                </div>
-
-                <div class="card__content">
-                    <h3 class="card__name">{{ room.name }}</h3>
-                    <p class="card__description">{{ room.description }}</p>
-                    <p class="roomCard__price">{{ room.priceNight }}€ / nuit</p>
-
-                    <div class="card__actions">
-                        <a href="{{ path('app_room_show', {'id': room.id}) }}">Découvrir</a>
+                <div class="admin-room__card-actions">
+                    <p class="admin-room__card-price">{{ room.priceNight }}€ / nuit</p>
+                    <div class="admin-room__card-actions-mode">
                         <a href="{{ path('app_room_edit', {'id': room.id}) }}">Edit</a>
+                        {{ include('room/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>
-            {% endfor %}
-        </section>
-        <div class="card__actions">
-            <a href="{{ path('app_room_new') }}">Create new</a>
         </div>
+    {% endfor %}
+</section>
 {% endblock %}

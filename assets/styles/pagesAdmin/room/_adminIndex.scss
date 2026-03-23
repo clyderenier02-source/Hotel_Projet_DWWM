@@ -1,0 +1,76 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base.admin' as *;
+
+.admin-room {
+    padding: 3rem;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+
+        &-sub {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        & a {
+            font-size: 2rem;
+            background-color: $gold;
+            border-radius: 15px;
+            padding: 1rem 2rem;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #333;
+            margin-top: 3rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__card {
+        background-color: red;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        border-radius: 15px;
+
+        &-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & p {
+                padding: 0;
+            }
+
+            &-mode {
+                display: flex;
+                align-items: center;
+                text-align: right;
+
+                & a {
+                    background-color: $gold;
+                    padding: 1rem 2rem;
+                    border-radius: 15px;
+                    font-size: 1.5rem;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+}
+
+.btn {
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    font-size: 1.9rem;
+}

@@ -1,0 +1,7 @@
+@use '../abstract/variables' as *;
+
+.admin p {
+    color: black;
+    font-size: 2rem;
+    font-family: $font-text;
+}

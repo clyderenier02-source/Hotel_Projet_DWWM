@@ -1,0 +1,13 @@
+// add your SASS styles in this file
+@use 'abstract/variables';
+@use 'abstract/mixins';
+
+@use 'layout/header';
+
+@use 'components/base.admin';
+
+@use 'pagesAdmin/dashboardCard' as dashboard;
+
+@use 'pagesAdmin/room/adminIndex' as admin-room;
+
+@use "fonts/fonts";
