@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
 {% block title %}Payment index{% endblock %}
 
@@ -11,7 +11,6 @@
                 <th>Date_payment</th>
                 <th>Mode</th>
                 <th>Status</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,13 +18,9 @@
             <tr>
                 <td>{{ payment.id }}</td>
                 <td>{{ payment.total }}</td>
-                <td>{{ payment.datePayment ? payment.datePayment|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ payment.datePayment ? payment.datePayment|date('Y-m-d') : '' }}</td>
                 <td>{{ payment.mode }}</td>
                 <td>{{ payment.status }}</td>
-                <td>
-                    <a href="{{ path('app_payment_show', {'id': payment.id}) }}">show</a>
-                    <a href="{{ path('app_payment_edit', {'id': payment.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -34,5 +29,4 @@
         {% endfor %}
         </tbody>
     </table>
-    {# <a href="{{ path('app_payment_new', {id: room.id}) }}">Create new</a> #}
 {% endblock %}
