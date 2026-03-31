@@ -14,13 +14,13 @@
                 <p>{{ service.time }}h</p>
 
                 <div class="card__actions">
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
-                    {{ include('service/_delete_form.html.twig') }}
+                    <a href="{{ path('app_admin_service_edit', {'id': service.id}) }}">edit</a>
+                    {{ include('admin/service/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>
         {% endfor %}
         <div class="card__actions">
-            <a href="{{ path('app_service_new') }}">Create new</a>
+            <a href="{{ path('app_admin_service_new') }}">Create new</a>
         </div>
 {% endblock %}

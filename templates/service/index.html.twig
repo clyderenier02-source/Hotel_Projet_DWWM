@@ -29,15 +29,7 @@
                 {% else %}
                     <p>{{ service.time / 60 }}h</p>
                 {% endif %}
-
-                <div class="card__actions">
-                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
-                </div>
             </div>
         </div>
-        {% endfor %}
-        <div class="card__actions">
-            <a href="{{ path('app_service_new') }}">Create new</a>
-        </div>
+    {% endfor %}
 {% endblock %}
