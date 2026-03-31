@@ -1,11 +1,14 @@
 @use "../../abstract/variables" as *;
 @use '../../components/base' as *;
 
-.reservation {
-    width: 100%;
-    padding: 5rem 0;
+.reservation--front {
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    .reservation {
+    width: 100%;
+    padding: 5rem 0;
 
     &__card {
         margin-bottom: 3rem;
@@ -25,4 +28,5 @@
         display: flex;
         justify-content: space-between;
     }
+}
 }

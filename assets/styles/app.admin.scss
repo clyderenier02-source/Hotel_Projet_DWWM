@@ -2,12 +2,14 @@
 @use 'abstract/variables';
 @use 'abstract/mixins';
 
-@use 'pagesAdmin/layout/header.admin';
-
 @use 'components/base.admin';
 
-@use 'pagesAdmin/dashboard/dashboardCard' as dashboard;
+@use 'pagesAdmin/layout/header.admin';
 
-@use 'pagesAdmin/room/adminIndex' as admin-room;
+@use 'pagesAdmin/dashboard/dashboard.admin' as dashboard;
+
+@use 'pagesAdmin/room/index.admin' as admin-room;
+
+@use 'pagesAdmin/reservation/reservation.admin' as reservation;
 
 @use "fonts/fonts";

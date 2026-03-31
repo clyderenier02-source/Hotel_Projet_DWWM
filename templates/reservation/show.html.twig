@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Date_return</th>
-                <td>{{ reservation.dateReturn ? reservation.dateReturn|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.dateReturn ? reservation.dateReturn|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
                 <th>Date_arrived</th>
-                <td>{{ reservation.dateArrived ? reservation.dateArrived|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.dateArrived ? reservation.dateArrived|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
                 <th>Total_price</th>

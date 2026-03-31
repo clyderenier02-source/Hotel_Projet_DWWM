@@ -7,7 +7,7 @@
     <div class="admin-room__header">
         <div class="admin-room__header-sub">
             <h4>Chambres</h4>
-        <a href="{{ path('app_room_new') }}">Create new</a>
+        <a href="{{ path('app_admin_room_new') }}">Create new</a>
         </div>
     </div>
     {% for room in rooms %}
@@ -19,8 +19,8 @@
                 <div class="admin-room__card-actions">
                     <p class="admin-room__card-price">{{ room.priceNight }}€ / nuit</p>
                     <div class="admin-room__card-actions-mode">
-                        <a href="{{ path('app_room_edit', {'id': room.id}) }}">Edit</a>
-                        {{ include('room/_delete_form.html.twig') }}
+                        <a href="{{ path('app_admin_room_edit', {'id': room.id}) }}">Edit</a>
+                        {{ include('admin/room/_delete_form.html.twig') }}
                     </div>
                 </div>
             </div>

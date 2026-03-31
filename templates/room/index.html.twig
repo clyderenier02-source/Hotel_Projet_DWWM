@@ -30,13 +30,13 @@
 
                     <div class="card__actions">
                         <a href="{{ path('app_room_show', {'id': room.id}) }}">Découvrir</a>
-                        <a href="{{ path('app_room_edit', {'id': room.id}) }}">Edit</a>
+                        {# <a href="{{ path('app_room_edit', {'id': room.id}) }}">Edit</a> #}
                     </div>
                 </div>
             </div>
             {% endfor %}
         </section>
-        <div class="card__actions">
+        {# <div class="card__actions">
             <a href="{{ path('app_room_new') }}">Create new</a>
-        </div>
+        </div> #}
 {% endblock %}

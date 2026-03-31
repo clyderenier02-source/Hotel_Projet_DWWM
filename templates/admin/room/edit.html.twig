@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Room</h1>
 
-    {{ include('room/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/room/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_room_index') }}">back to list</a>
 
-    {{ include('room/_delete_form.html.twig') }}
+    {{ include('admin/room/_delete_form.html.twig') }}
 {% endblock %}

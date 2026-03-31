@@ -1,0 +1,35 @@
+@use "../../abstract/variables" as *;
+@use '../../components/base.admin' as *;
+
+.reservation--admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .reservation {
+        width: 100%;
+        padding: 5rem 0;
+
+        &__card {
+            margin-bottom: 3rem;
+            background-color: $white;
+            border-radius: 5px;
+            padding: 2rem 2rem;
+        }
+
+        &__list {
+            width: 80%;
+            padding: 2rem 2rem;
+        }
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &__btn {
+            color: $gold;
+            font-size: 2rem;
+        }
+    }
+}

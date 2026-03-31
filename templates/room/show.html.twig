@@ -36,11 +36,6 @@
 
             <div class="roomDetails__actions">
                 <a href="{{ path('app_room_index') }}">Retour à la liste</a>
-                <a href="{{ path('app_room_edit', {'id': room.id}) }}">Modifier</a>
-            </div>
-
-            <div class="roomDetails__delete">
-                {{ include('room/_delete_form.html.twig') }}
             </div>
         </div>
     </section>
