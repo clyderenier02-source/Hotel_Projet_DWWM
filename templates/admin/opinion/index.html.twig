@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
 {% block title %}Avis clients{% endblock %}
 
@@ -38,16 +38,10 @@
                         <span class="opinionHome__note">{{ opinion.note }}/5</span>
                     </div>
                     <p class="opinionHome__comment">{{ opinion.comment }}</p>
+                    {{ include('admin/opinion/_delete_form.html.twig') }}
                 </div>
             {% endfor %}
         </div>
-    {% endif %}
-    {% if app.user %}
-        <a href="{{ path('app_opinion_new') }}" class="opinionHome__write">
-            <div class="opinionHome__btn">
-                <p>Laisser un avis</p>
-            </div>
-        </a>
     {% endif %}
 </div>
 {% endblock %}

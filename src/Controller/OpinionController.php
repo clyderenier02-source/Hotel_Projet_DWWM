@@ -58,41 +58,4 @@ final class OpinionController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    #[Route('/{id}', name: 'app_opinion_show', methods: ['GET'])]
-    public function show(Opinion $opinion): Response
-    {
-        return $this->render('opinion/show.html.twig', [
-            'opinion' => $opinion,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_opinion_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Opinion $opinion, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(OpinionType::class, $opinion);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_opinion_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('opinion/edit.html.twig', [
-            'opinion' => $opinion,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_opinion_delete', methods: ['POST'])]
-    public function delete(Request $request, Opinion $opinion, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$opinion->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($opinion);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_opinion_index', [], Response::HTTP_SEE_OTHER);
-    }
 }

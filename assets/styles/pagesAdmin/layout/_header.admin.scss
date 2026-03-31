@@ -61,6 +61,18 @@ body.menu-open{
                     padding: 3rem;
                     display: flex;
                     justify-content: center;
+                    flex-direction: column;
+                    width: 90%;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background-color: black;
+                        margin-top: 16px;
+                        margin-bottom: 10px;
+                    }
                     
                     &:hover{
                         background-color: #3333;
