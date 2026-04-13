@@ -1,0 +1,99 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.contact--admin {
+    @include admin-page-wrapper;
+
+    .contact {
+
+        &__header {
+            @include admin-page-header;
+
+            @include desktop {
+                min-width: 900px;
+            }
+        }
+
+        &__titlePage {
+            @include admin-page-title;
+        }
+
+        &__item {
+            @include admin-list;
+
+            @include desktop {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.4rem 2rem;
+                width: 60%;
+                min-width: 900px;
+                margin-inline: auto;
+            }
+        }
+
+        &__card {
+            @include admin-card;
+            cursor: pointer;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+
+            @include desktop {
+                flex: 1;
+            }
+        }
+
+        &__email {
+            font-size: 1rem;
+            color: $leaf-dark;
+            font-family: $font-text;
+
+            @include desktop {
+                font-size: 1.1rem;
+            }
+        }
+
+        &__message {
+            font-size: 0.9rem;
+            color: $admin-text-subtle;
+            font-family: $font-text;
+            line-height: 1.5;
+
+            @include desktop {
+                font-size: 1.1rem;
+            }
+        }
+
+        &__meta {
+            @include admin-meta-separator;
+        }
+
+        &__date {
+            font-size: 1rem;
+            color: $admin-text-muted;
+            font-family: $font-text;
+        }
+
+        &__actions {
+            display: flex;
+            align-items: center;
+        }
+
+        &__btn {
+            @include admin-btn-show;
+        }
+
+        &__empty {
+            @include admin-empty-state;
+        }
+    }
+}

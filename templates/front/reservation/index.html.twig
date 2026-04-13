@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations Eden Palm{% endblock %}
+
+{% block body %}
+<section class="reservation reservation--front">
+
+    <div class="reservation__header">
+        <h1 class="reservation__title">Mes réservations</h1>
+        <p class="reservation__count">{{ reservations|length }} réservation{{ reservations|length > 1 ? 's' : '' }}</p>
+    </div>
+
+    <div class="reservation__list">
+        {% for reservation in reservations %}
+        <div class="reservation__card">
+            <div class="reservation__inner">
+                <div class="reservation__dates">
+                    <div class="reservation__date">
+                        <p class="reservation__label">Arrivée</p>
+                        <p class="reservation__value">{{ reservation.dateArrived|date('d/m/Y') }}</p>
+                    </div>
+                    <div class="reservation__date">
+                        <p class="reservation__label">Départ</p>
+                        <p class="reservation__value">{{ reservation.dateReturn|date('d/m/Y') }}</p>
+                    </div>
+                    <div class="reservation__date">
+                        <p class="reservation__label">Total</p>
+                        <p class="reservation__value reservation__value--price">{{ reservation.totalPrice }} €</p>
+                    </div>
+                </div>
+
+                <div class="reservation__footer">
+                    <p class="reservation__status reservation__badge--{{ reservation.status|lower }}">{{ reservation.status }}</p>
+                    <a class="reservation__btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Voir le détail</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="reservation__empty">Aucune réservation trouvée.</p>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}

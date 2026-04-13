@@ -1,34 +1,69 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Reservation{% endblock %}
+{% block title %}Réservation #{{ reservation.id }}{% endblock %}
 
 {% block body %}
-    <h1>Reservation</h1>
+<div class="admin-reservation-show">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_return</th>
-                <td>{{ reservation.dateReturn ? reservation.dateReturn|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_arrived</th>
-                <td>{{ reservation.dateArrived ? reservation.dateArrived|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Total_price</th>
-                <td>{{ reservation.totalPrice }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ reservation.status }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="admin-reservation-show__header">
+        <h1 class="admin-reservation-show__titlePage">Réservation #{{ reservation.id }}</h1>
+        <a href="{{ path('app_admin_reservation_index') }}" class="admin-reservation-show__btn--back">Retour aux réservations</a>
+    </div>
 
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
+    <div class="admin-reservation-show__card">
+
+        <h2 class="admin-reservation-show__section-title">Client</h2>
+
+        <div class="admin-reservation-show__info">
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Email</p>
+                <p class="admin-reservation-show__value">{{ reservation.user.email }}</p>
+            </div>
+        </div>
+
+        <div class="admin-reservation-show__separator"></div>
+
+        <h2 class="admin-reservation-show__section-title">Séjour</h2>
+
+        <div class="admin-reservation-show__info">
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Chambre</p>
+                <p class="admin-reservation-show__value">{{ reservation.room.name }}</p>
+            </div>
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Arrivée</p>
+                <p class="admin-reservation-show__value">{{ reservation.dateArrived|date('d/m/Y') }}</p>
+            </div>
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Départ</p>
+                <p class="admin-reservation-show__value">{{ reservation.dateReturn|date('d/m/Y') }}</p>
+            </div>
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Statut</p>
+                <div class="admin-reservation-show__status">
+                    <p class="admin-reservation-show__badge--{{ reservation.status|lower }}">{{ reservation.status }}</p>
+                </div>
+            </div>
+            <div class="admin-reservation-show__item">
+                <p class="admin-reservation-show__label">Prix total</p>
+                <p class="admin-reservation-show__price">{{ reservation.totalPrice }} €</p>
+            </div>
+        </div>
+
+        {% if reservation.payment %}
+            <div class="admin-reservation-show__separator"></div>
+
+            <h2 class="admin-reservation-show__section-title">Paiement</h2>
+
+            <div class="admin-reservation-show__info">
+                <div class="admin-reservation-show__item">
+                    <p class="admin-reservation-show__label">Mode de paiement</p>
+                    <p class="admin-reservation-show__value">{{ reservation.payment.mode ?? '—' }}</p>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
 {% endblock %}

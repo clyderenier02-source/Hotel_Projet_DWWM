@@ -1,0 +1,169 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin-photo-form {
+    @include admin-page-wrapper;
+
+    &__header {
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__btn--back {
+        @include admin-btn-show;
+    }
+
+    &__card {
+        @include admin-card;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        @include tablet {
+            margin-top: 2rem;
+            gap: 2rem;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 2.5rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
+
+    &__card--new {
+        @include desktop {
+            flex-direction: column;
+            align-items: stretch;
+            width: 60%;
+            min-width: 900px;
+        }
+
+        .admin-photo-form__form {
+            @include desktop {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__preview {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: $radius-btn;
+
+        @include desktop {
+            width: 320px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+
+        @include desktop {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            font-size: 0.7rem;
+            color: $color-danger-hover;
+            font-family: $font-text;
+        }
+    }
+    }
+
+    &__label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: $admin-text-muted;
+        font-family: $font-text;
+    }
+
+    &__input,
+    &__select {
+        @include admin-form-input;
+    }
+
+    &__hint {
+        font-size: 0.8rem;
+        color: $admin-text-muted;
+        font-family: $font-text;
+    }
+
+    &__actions {
+        @include admin-meta-separator;
+        gap: 0.6rem;
+
+        @include desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__btn--save {
+        display: inline-flex;
+        align-items: center;
+        background: $gold;
+        color: $white;
+        padding: 0.55rem 1.3rem;
+        border-radius: $radius-btn;
+        font-size: 0.85rem;
+        font-family: $font-text;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background: darken($gold, 10%);
+        }
+    }
+
+    &__btn--cancel {
+        @include admin-btn-show;
+    }
+
+    .photo__btn--delete {
+        @include admin-btn-delete;
+    }
+}

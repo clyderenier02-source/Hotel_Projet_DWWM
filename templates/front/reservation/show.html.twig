@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma Réservation Eden Palm{% endblock %}
+
+{% block body %}
+<section class="pageHero">
+    <div class="pageHero__breadcrumb">
+        <a href="/">Accueil</a>
+        <span>»</span>
+        <p>Ma réservation</p>
+    </div>
+    <h1 class="pageHero__title">MA RÉSERVATION</h1>
+</section>
+
+<section class="reservationShow">
+    <div class="reservationShow__wrapper">
+        <div class="reservationShow__card">
+            <div class="reservationShow__header">
+                <span class="reservationShow__ref">Réservation #{{ reservation.id }}</span>
+                <span class="reservationShow__status reservationShow__status--{{ reservation.status }}">
+                    {{ reservation.status }}
+                </span>
+            </div>
+
+            <div class="reservationShow__dates">
+                <div class="reservationShow__date">
+                    <span class="reservationShow__dateLabel">Arrivée</span>
+                    <span class="reservationShow__dateValue">
+                        {{ reservation.dateArrived ? reservation.dateArrived|date('d F Y') : '-' }}
+                    </span>
+                </div>
+
+                <div class="reservationShow__dateSeparator">
+                    <span class="reservationShow__dateNights">
+                        {% set nights = (reservation.dateReturn.timestamp - reservation.dateArrived.timestamp) / 86400 %}
+                        {{ nights }} nuit{{ nights > 1 ? 's' : '' }}
+                    </span>
+                </div>
+
+                <div class="reservationShow__date">
+                    <span class="reservationShow__dateLabel">Départ</span>
+                    <span class="reservationShow__dateValue">
+                        {{ reservation.dateReturn ? reservation.dateReturn|date('d F Y') : '-' }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="reservationShow__divider"></div>
+            <div class="reservationShow__total">
+                <span class="reservationShow__totalLabel">Total</span>
+                <span class="reservationShow__totalPrice">{{ reservation.totalPrice }} €</span>
+            </div>
+        </div>
+
+        <a href="{{ path('app_reservation_index') }}" class="reservationShow__back">Retour à mes réservations</a>
+    </div>
+</section>
+{% endblock %}

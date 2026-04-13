@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homeFeatures {
     display: flex;
@@ -13,12 +14,27 @@
         background: linear-gradient($leaf-light, $forest-dark);
         border: 2px solid $gold;
         color: $white;
-        width: 45%;
-        height: 50rem;
+        width: 65%;
         border-radius: 30px;
         position: relative;
-        margin: -400px auto 0 auto;
+        margin: -239px auto 0 auto;
         z-index: 1;
+
+        @include tablet {
+            flex-direction: row;
+            width: 75%;
+            padding: 1rem 0;
+            margin: -117px auto 0 auto;
+        }
+
+        @include desktop {
+            width: 70%;
+            padding: 1.5rem 2rem;
+            gap: 1rem;
+            border-radius: 40px;
+            height: 300px;
+            margin: -150px auto 0 auto;
+        }
     }
 
     &__item {
@@ -26,13 +42,34 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 1.7rem;
         text-align: center;
         padding: 1rem;
+
+        @include tablet {
+            width: 33%;
+            padding: 1.2rem;
+        }
+
+        @include desktop {
+            padding: 1.5rem 2rem;
+
+            & p {
+                font-size: 1rem;
+            }
+        }
     }
 
     &__item img {
         width: 15%;
         margin-bottom: 1.5rem;
+
+        @include tablet {
+            width: 25%;
+        }
+
+        @include desktop {
+            width: 55px;
+            margin-bottom: 1.2rem;
+        }
     }
 }

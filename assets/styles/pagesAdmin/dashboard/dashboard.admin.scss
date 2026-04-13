@@ -1,33 +1,110 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base.admin' as *;
+@use "../../abstract/mixins" as *;
 
 .dashboard {
-    padding: 5rem;
+    @include admin-page-wrapper;
+
+    &__header {
+            @include admin-page-header;
+
+            @include desktop {
+                min-width: 900px;
+            }
+        }
+
+    &__titlePage {
+            @include admin-page-title;
+        }
+
+    &__title {
+        @include admin-page-title;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
 
     &__card {
-        background-color: $white;
-        border-radius: 15px;
-        margin-bottom: 4rem;
+        @include admin-card;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 2rem 2rem;
+        cursor: pointer;
+        border: 1px solid transparent;
+        text-decoration: none;
+        padding: 1.1rem 1.2rem;
+        min-height: 72px;
 
-        & h4 {
-            color: black;
-            font-size: 2rem;
+        &:hover {
+            transform: translateY(-3px);
+            border-color: rgba($gold, 0.2);
         }
 
-        & i {
-            transform: rotate(-90deg);
-            font-size: 3rem;
-            color: black;
-            background-color: $gold;
-            border-radius: 50%;
-            height: 100px;
-            padding: 3rem 2rem;
+        @include tablet {
+            padding: 1.4rem 1.6rem;
+            min-height: 88px;
+        }
+
+        h4 {
+            color: $admin-text-dark;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            margin: 0;
+            font-family: $font-text;
+            font-weight: 500;
+
+            @include tablet {
+                font-size: 1.05rem;
+            }
+        }
+
+        i {
+            font-size: 1.3rem;
+            color: $gold;
+            background: rgba($gold, 0.12);
+            border-radius: 10px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            transform: rotate(-90deg);
+            box-shadow: 0 4px 10px rgba($gold, 0.18);
+            flex-shrink: 0;
+
+            @include tablet {
+                width: 52px;
+                height: 52px;
+                font-size: 1.6rem;
+            }
+
+            @include desktop {
+                width: 58px;
+                height: 58px;
+                font-size: 1.8rem;
+            }
         }
     }
 }

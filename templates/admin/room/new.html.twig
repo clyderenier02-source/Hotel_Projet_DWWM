@@ -1,11 +1,26 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}New Room{% endblock %}
+{% block title %}Nouvelle chambre{% endblock %}
 
 {% block body %}
-    <h1>Create new Room</h1>
+<div class="admin-room-form">
 
-    {{ include('admin/room/_form.html.twig') }}
+    <div class="admin-room-form__header">
+        <h1 class="admin-room-form__titlePage">Nouvelle chambre</h1>
+        <a href="{{ path('app_admin_room_index') }}" class="admin-room-form__btn--back">Retour aux chambres</a>
+    </div>
 
-    <a href="{{ path('app_admin_room_index') }}">back to list</a>
+    <div class="admin-room-form__card">
+        {{ form_start(form) }}
+        <div class="admin-room-form__form">
+            {% include 'admin/room/_form.html.twig' %}
+
+            <div class="admin-room-form__actions">
+                <a href="{{ path('app_admin_room_index') }}" class="admin-room-form__btn--cancel">Annuler</a>
+                <button type="submit" class="admin-room-form__btn--save">Créer la chambre</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

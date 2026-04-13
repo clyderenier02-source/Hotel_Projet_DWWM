@@ -1,11 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
-{% block title %}New Photo{% endblock %}
+{% block title %}Nouvelle photo{% endblock %}
 
 {% block body %}
-    <h1>Create new Photo</h1>
+<div class="admin-photo-form">
+    <div class="admin-photo-form__header">
+        <h1 class="admin-photo-form__titlePage">Nouvelle photo</h1>
+        <a href="{{ path('app_admin_photo_index') }}" class="admin-photo-form__btn--back">Retour aux photos</a>
+    </div>
 
-    {{ include('photo/_form.html.twig') }}
-
-    <a href="{{ path('app_photo_index') }}">back to list</a>
+    <div class="admin-photo-form__card admin-photo-form__card--new">
+        {{ form_start(form, { attr: { enctype: 'multipart/form-data' } }) }}
+        <div class="admin-photo-form__form">
+            {% include 'admin/photo/_form.html.twig' %}
+            <div class="admin-photo-form__actions">
+                <a href="{{ path('app_admin_photo_index') }}" class="admin-photo-form__btn--cancel">Annuler</a>
+                <button type="submit" class="admin-photo-form__btn--save">Ajouter la photo</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

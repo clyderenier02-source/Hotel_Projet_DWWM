@@ -1,4 +1,18 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="admin-photo-form__group">
+    {{ form_label(form.filename, 'Image', { label_attr: { class: 'admin-photo-form__label' } }) }}
+    {{ form_widget(form.filename, { attr: { class: 'admin-photo-form__input' } }) }}
+    <span class="admin-photo-form__hint">JPG, PNG, WEBP — 5 Mo max.</span>
+    {{ form_errors(form.filename) }}
+</div>
+
+<div class="admin-photo-form__group">
+    {{ form_label(form.room, 'Chambre associée', { label_attr: { class: 'admin-photo-form__label' } }) }}
+    {{ form_widget(form.room, { attr: { class: 'admin-photo-form__select' } }) }}
+    {{ form_errors(form.room) }}
+</div>
+
+<div class="admin-photo-form__group">
+    {{ form_label(form.service, 'Service associé', { label_attr: { class: 'admin-photo-form__label' } }) }}
+    {{ form_widget(form.service, { attr: { class: 'admin-photo-form__select' } }) }}
+    {{ form_errors(form.service) }}
+</div>

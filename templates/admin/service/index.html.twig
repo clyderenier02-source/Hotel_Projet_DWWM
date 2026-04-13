@@ -3,24 +3,40 @@
 {% block title %}Service index{% endblock %}
 
 {% block body %}
+<div class="admin-service">
+        <div class="admin-service__header">
+            <h1 class="admin-service__titlePage">Service</h1>
+
+            <a href="{{ path('app_admin_service_new') }}"class="admin-service__btn admin-service__btn--create">+ Ajouter des services</a>
+        </div>
+        <div class="admin-service__list">
     {% for service in services %}
-        <div class="card">
-            
+        <div class="admin-service__card">
+            <div class="admin-service__content">
+                <div class="admin-service__info">
+                    <h3 class="admin-service__name">{{ service.name }}</h3>
+                    <p class="admin-service__description">
+                        {{ service.description | slice(0, 73) ~ '...' }}
+                    </p>
 
-            <div class="card__content">
-                <h3 class="card__name">{{ service.name }}</h3>
-                <p class="card__description">{{ service.description | slice(0, 73) ~ '...' }}</p>
-                <p class="roomCard__price">{{ service.price }}€</p>
-                <p>{{ service.time }}h</p>
+                    <div class="admin-service__meta">
+                        <p class="admin-service__price">{{ service.price }}€</p>
 
-                <div class="card__actions">
-                    <a href="{{ path('app_admin_service_edit', {'id': service.id}) }}">edit</a>
+                        {% if service.time < 60 %}
+                            <p class="admin-service__time">{{ service.time }}min</p>
+                        {% else %}
+                            <p class="admin-service__time">{{ service.time / 60 }}h</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="admin-service__actions">
+                    <a href="{{ path('app_admin_service_edit', {'id': service.id}) }}" class="admin-service__btn admin-service__btn--edit">Modifier</a>
                     {{ include('admin/service/_delete_form.html.twig') }}
                 </div>
             </div>
         </div>
-        {% endfor %}
-        <div class="card__actions">
-            <a href="{{ path('app_admin_service_new') }}">Create new</a>
-        </div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}

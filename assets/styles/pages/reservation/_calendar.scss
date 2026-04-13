@@ -1,0 +1,205 @@
+@use "../../abstract/variables" as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
+
+.reservationForm {
+    
+    &__wrapper {
+        padding: 0 1rem;
+
+        @include tablet {
+            padding: 0 3rem;
+        }
+
+        @include desktop {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+    }
+
+    &__fields {
+        @include desktop {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+
+    &__field {
+        @include desktop {
+            flex: 1;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba($white, 0.7);
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        font-family: $font-text;
+    }
+
+    &__input {
+        padding: 0.8rem 1rem;
+        width: 100%;
+        font-size: 0.9rem;
+        border-radius: $radius-btn;
+        border: 1px solid rgba($leaf-light, 0.3);
+        background: rgba($white, 0.05);
+        color: $white;
+        font-family: $font-text;
+    }
+
+    &__calendar {
+        display: none;
+
+        &--visible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+    }
+
+    &__button {
+        font-size: 0.9rem;
+        width: 100%;
+        margin: 2rem 0;
+        cursor: pointer;
+    }
+}
+
+.flatpickr-calendar {
+    background: linear-gradient($forest-deep, $leaf-dark) !important;
+    color: $white !important;
+    width: 80% !important;
+    padding: 0.8rem !important;
+    font-size: 0.6rem !important;
+
+    @include tablet {
+        width: 60% !important;
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
+
+    @include desktop {
+        width: 90% !important;
+        padding: 1rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+.dayContainer {
+    color: $white !important;
+    width: 100% !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr);
+    min-width: 100% !important;
+}
+
+.flatpickr-weekday {
+    color: $white !important;
+
+}
+.flatpickr-current-month {
+    color: $white !important;
+
+}
+.flatpickr-day.flatpickr-disabled:hover { 
+border: none !important;
+background: none !important;
+}
+
+.flatpickr-day {
+    color: $white !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    height: 2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    line-height: 3rem !important;
+
+    @include tablet {
+        height: 3rem !important;
+    }
+}
+
+.flatpickr-day:hover {
+    border: 1px solid $gold !important;
+
+}
+.flatpickr-day.selected {
+    background-color: $leaf-light !important;
+    border: none;
+}
+
+.flatpickr-day.today {
+    border: 1px solid $gold !important;
+}
+
+.flatpickr-prev-month, .flatpickr-next-month {
+    color: $white !important;
+    fill: $white !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg { 
+    fill: $gold !important;
+}
+
+.flatpickr-day:hover,.flatpickr-day:focus {
+    border-color: $gold !important;
+    background: $leaf-light !important;
+    color: $white;
+}
+
+.flatpickr-calendar .arrowUp::after {
+    border-bottom: 4px solid $white !important;
+}
+
+.flatpickr-calendar .arrowDown::after {
+    border-top: 4px solid $white !important;
+}
+
+.flatpickr-rContainer {
+    width: 100% !important;
+}
+
+.flatpickr-days { 
+    width: 100% !important;
+    justify-content: center !important;
+}
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: rgba(255, 255, 255, 0.2) !important;
+    cursor: not-allowed;
+}
+
+.flatpickr-months {
+    padding-bottom: 1rem !important;
+}
+
+.flatpickr-day.arrival-date {
+    color: $white !important;
+    background-color: $leaf-light !important;
+}
+
+.flatpickr-calendar.arrowBottom::before,
+.flatpickr-calendar.arrowBottom::after,
+.flatpickr-calendar.arrowTop::before,
+.flatpickr-calendar.arrowTop::after {
+    display: none !important;
+}
+
+.flatpickr-monthDropdown-month {
+    background-color: $forest-dark !important;
+}

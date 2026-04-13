@@ -1,35 +1,41 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Photo index{% endblock %}
+{% block title %}Photos{% endblock %}
 
 {% block body %}
-    <h1>Photo index</h1>
+<section class="photo photo--admin">
+    <div class="photo__list">
+        <div class="photo__header">
+            <h1 class="photo__titlePage">Photos</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Filename</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for photo in photos %}
-            <tr>
-                <td>{{ photo.id }}</td>
-                <td>{{ photo.filename }}</td>
-                <td>
-                    <a href="{{ path('app_admin_photo_show', {'id': photo.id}) }}">show</a>
-                    <a href="{{ path('app_admin_photo_edit', {'id': photo.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <a href="{{ path('app_admin_photo_new') }}" class="photo__btn photo__btn--create">+ Ajouter des photos</a>
+        </div>
+        <div class="photo__item">
+            {% for photo in photos %}
+                <div class="photo__card">
+                    <div class="photo__image">
+                        <img src="{{ asset('uploads/' ~ photo.filename) }}" alt="photo {{ photo.id }}">
+                    </div>
+                    <div class="photo__content">
+                        <div class="photo__info">
+                            <h3 class="photo__title">Photo #{{ photo.id }}</h3>
 
-    <a href="{{ path('app_admin_photo_new') }}">Create new</a>
+                            <p class="photo__filename">{{ photo.filename }}</p>
+                        </div>
+
+                        <div class="photo__actions">
+                            <a href="{{ path('app_admin_photo_show', {'id': photo.id}) }}" class="photo__btn photo__btn--view">Voir</a>
+                            <a href="{{ path('app_admin_photo_edit', {'id': photo.id}) }}" class="photo__btn photo__btn--edit">Modifier</a>
+                            {{ include('admin/photo/_delete_form.html.twig', { photo: photo }) }}
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="photo__empty">
+                    <p>Aucune photo</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}

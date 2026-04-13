@@ -1,4 +1,3 @@
-// add your SASS styles in this file
 @use 'abstract/variables';
 @use 'abstract/mixins';
 
@@ -9,7 +8,25 @@
 @use 'pagesAdmin/dashboard/dashboard.admin' as dashboard;
 
 @use 'pagesAdmin/room/index.admin' as admin-room;
+@use 'pagesAdmin/room/form.admin' as room-form;
 
-@use 'pagesAdmin/reservation/reservation.admin' as reservation;
+@use 'pagesAdmin/reservation/index.admin' as reservation;
+@use 'pagesAdmin/reservation/show.admin' as show;
+
+@use 'pagesAdmin/service/index.admin' as admin-service;
+@use 'pagesAdmin/service/form.admin' as service-form;
+
+@use 'pagesAdmin/contact/index.admin' as admin-contact;
+@use 'pagesAdmin/contact/show.admin' as contact-show;
+
+@use 'pagesAdmin/payment/index.admin' as payment;
+
+@use 'pagesAdmin/photo/index.admin' as admin-photo;
+@use 'pagesAdmin/photo/form.admin' as photo-form;
+@use 'pagesAdmin/photo/show.admin' as photo-show;
+
+@use 'pagesAdmin/role/role.admin.user' as user;
+
+@use 'pagesAdmin/opinion/index.admin' as opinion;
 
 @use "fonts/fonts";

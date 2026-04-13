@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<section class="pageHero">
+    <div class="pageHero__breadcrumb">
+        <a href="/home">Accueil</a>
+        <span>»</span>
+        <p>Connexion</p>
+    </div>
+</section>
+
+<section class="loginForm">
+    {% if error %}
+        <div class="loginForm__error">Email ou mot de passe incorrect.</div>
+    {% endif %}
+
+    <div class="loginForm__card">
+        <div class="loginForm__header">
+            <h1 class="loginForm__title">Bon retour</h1>
+            <p class="loginForm__subtitle">Connectez-vous à votre espace</p>
+        </div>
+
+        <form method="post" class="loginForm__wrapper">
+            <div class="loginForm__field">
+                <label class="loginForm__label" for="username">Email</label>
+                <input type="email" value="{{ last_username }}" name="_username" id="username" class="loginForm__input" autocomplete="email" placeholder="votre@email.com" required autofocus>
+            </div>
+
+            <div class="loginForm__field">
+                <label class="loginForm__label" for="password">Mot de passe</label>
+                <input type="password" name="_password" id="password" class="loginForm__input" autocomplete="current-password" placeholder="password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+            <button class="loginForm__button" type="submit">Connexion</button>
+        </form>
+        <p class="loginForm__switch">Pas encore de compte ? <a href="/register">S'inscrire</a></p>
+    </div>
+</section>
+{% endblock %}

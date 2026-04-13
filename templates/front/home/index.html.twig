@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eden Palm Résidence haut de gamme à Palmaria{% endblock %}
+
+{% block body %}
+    <section class="homeHero">
+        <div class="homeHero__text">
+            <h1 class="homeHero__title">Le projet immobilier qui redéfinit l'art de vivre</h1>
+            <p class="homeHero__subtitle">Résidence haut de gamme au cœur de Palmaria, Eden Palm vous offre un cadre de vie élégant, paisible et parfaitement connecté à l'essentiel.</p>
+
+            <a href="{{ path('app_reservation_calendar') }}" class="homeHero__button">Je suis intéressé(e) par la planification d'une visite !</a>
+        </div>
+    </section>
+
+    <section class="homeFeatures">
+        <div class="homeFeatures__menu">
+            <div class="homeFeatures__item">
+                <img src="{{ asset('svg/gym.svg') }}" alt="">
+                <p>Salle de sport moderne et espaces dédiés à la détente.</p>
+            </div>
+
+            <div class="homeFeatures__item">
+                <img src="{{ asset('svg/security.svg') }}" alt="">
+                <p>Résidence sécurisée avec poste de garde et accès contrôlé.</p>
+            </div>
+
+            <div class="homeFeatures__item">
+                <img src="{{ asset('svg/e-commerce.svg') }}" alt="">
+                <p>Espaces pour livraisons et e-commerce intégrés.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="homeDescription">
+        <div class="homeDescription__hotel">
+            <img class="homeDescription__image"src="{{ asset('Img-accueil/Entrer-hotel1.png') }}">
+
+            <div class="homeDescription__text">
+                <h2>Une immersion dans le doux rythme de Palmaria</h2>
+                <p>Bienvenue à Eden Palm, un projet pensé pour celles et ceux qui recherchent l'équilibre parfait entre nature, confort et modernité.</p>
+                <p>Située au cœur de Palmaria, la résidence offre un environnement calme et verdoyant, tout en restant à proximité immédiate des commodités essentielles. Ici, chaque détail a été conçu pour créer une atmosphère chaleureuse, élégante et durable.</p>
+                <p>Paisible sans être isolée, Eden Palm bénéficie d'un emplacement stratégique : centres commerciaux, restaurants, écoles, salles de sport, parcs et hôpitaux sont accessibles en quelques minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="homeAppart">
+        <div class="homeAppart__content">
+            <img class="homeAppart__image"src="{{ asset('Img-accueil/Entrer_hotel.png') }}">
+
+            <div class="homeAppart__text">
+                <h2>Votre refuge privé !</h2>
+                <div class="homeAppart__item">
+                    <p class="homeAppart__line">Chaque appartement de Eden Palm a été soigneusement conçu pour offrir un maximum de confort, de fonctionnalité et de raffinement.</p>
+                    <p class="homeAppart__line">Appartements d'une superficie allant de 101 à 124 m²</p>
+                    <p class="homeAppart__line">4 chambres</p>
+                    <p class="homeAppart__line">Serrures électroniques</p>
+                    <p class="homeAppart__line">Agencements pensés pour une vie moderne et pratique</p>
+                    <a href="{{ path('app_contact_new') }}" class="homeAppart__button">Parler à un conseiller</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="homePreview">
+        <div class="homePreview__card">
+            <h2>Un aperçu de la vie à Eden Palm :</h2>
+            <p>Là où chaque détail a été pensé pour vous offrir une expérience de vie unique, favorisant le bien-être, la sérénité et l'élégance au quotidien.</p>
+        </div>
+        <div class="homePreview__content">
+            <div class="homePreview__gallery">
+                <img src="{{ asset('Img-accueil/chambre.png')}}" alt="chambre">
+                <img src="{{ asset('Img-accueil/massage.png')}}" alt="massage">
+                <img src="{{ asset('Img-accueil/spa.png')}}" alt="spa">
+            </div>
+        </div>
+    </section>
+
+    <section class="homeMap">
+        <div class="homeMap__inner">
+            <div class="homeMap__text">
+                <h2>Emplacement privilégié</h2>
+                <p>Casa Jardins bénéficie d'un emplacement stratégique dans le quartier le plus prestigieux de Palmaria, Jardins. Elle est littéralement entourée par le Parque da Sementeira et profite de tout le charme de la région.</p>
+            </div>
+
+            <div class="homeMap__iframe">
+                <iframe title="Carte de localisation Eden Palm" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40860.92778462383!2d-3.551626364891489!3d40.
+                    430852136545376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4231ce3e583c67%3A0x672b325921ad2cce!2sCrowne%20
+                    Plaza%20Madrid%20Airport%20by%20IHG!5e0!3m2!1sfr!2sfr!4v1771923368978!5m2!1sfr!2sfr">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="homePlan">
+        <div class="homePlan__text">
+            <h2>Planifiez une visite et découvrez Eden Palm.</h2>
+            <p>Ne manquez pas cette occasion unique d'acquérir votre nouvelle maison. Contactez-nous dès maintenant et préparez-vous à vivre une vie extraordinaire !</p>
+        </div>
+    </section>
+{% endblock %}

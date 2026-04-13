@@ -1,32 +1,143 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../abstract/mixins" as *;
 
 .reservation--front {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 1rem 4rem;
+
+    @include tablet  {
+        padding: 0 1.5rem 4rem;
+    }
+
+    @include desktop {
+        padding: 0 2rem 4rem;
+    }
 
     .reservation {
-    width: 100%;
-    padding: 5rem 0;
 
-    &__card {
-        margin-bottom: 3rem;
-        background-color: $forest-dark;
-        border-radius: 5px;
-        box-shadow: 5px 3px #2C5F4A, -0.3em 0 0.7em #2C5F4A;
-        padding: 2rem 2rem;
+        &__header {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            padding: 2.5rem 0 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba($gold, 0.2);
+        }
+
+        &__title {
+            color: $white;
+        }
+
+        &__count {
+            font-family: $font-text;
+            font-size: 0.72rem;
+            color: rgba($gold, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding-top: 1rem;
+
+            @include tablet {
+                padding: 0;
+            }
+        }
+
+        &__list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        &__card {
+            background: $forest-dark;
+            border: 1px solid rgba($gold, 0.15);
+            border-radius: $radius-card;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+            @include gold-top-bar;
+
+            &:hover {
+                border-color: rgba($gold, 0.4);
+                box-shadow: $shadow-card-hover;
+            }
+        }
+
+        &__inner {
+            padding: 1.5rem 1.7rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        &__dates {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        &__date {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 1;
+        }
+
+        &__label {
+            font-family: $font-text;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba($gold, 0.5);
+            padding-bottom: 0;
+        }
+
+        &__value {
+            font-family: $font-title;
+            font-size: 1.1rem;
+            color: $white;
+            padding-bottom: 0;
+
+            &--price {
+                color: $gold;
+            }
+        }
+
+        &__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba($gold, 0.1);
+        }
+
+        &__badge {
+            &--paid {
+                @include status-badge(rgba($gold, 0.12), $gold);
+                border: 1px solid rgba($gold, 0.3);
+            }
+
+            &--pending {
+                @include status-badge($color-warning-bg, $color-warning-text);
+            }
+
+            &--failed {
+                @include status-badge($color-danger-bg, $color-danger-text);
+            }
+        }
+
+        &__btn {
+            @include admin-btn-show;
+        }
+
+        &__empty {
+            text-align: center;
+            padding: 3rem 0;
+            font-family: $font-text;
+            color: rgba($white, 0.3);
+        }
     }
-
-
-    &__list {
-        width: 80%;
-        padding: 2rem 2rem;
-    }
-
-    &__item {
-        display: flex;
-        justify-content: space-between;
-    }
-}
 }

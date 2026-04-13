@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller\admin;
+namespace App\Controller\Admin;
 
 use App\Entity\Service;
-use App\Form\ServiceType;
+use App\Form\Admin\ServiceType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ServiceRepository;

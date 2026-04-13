@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+    <section class="pageHero">
+        <div class="pageHero__breadcrumb">
+            <a href="/">Accueil</a>
+            <span>»</span>
+            <p>Service</p>
+        </div>
+            <h1 class="pageHero__title">LES SERVICES</h1>
+    </section>
+
+    <section class="serviceList">
+        {% for service in services %}
+            <div class="card">
+                <div class="card__image">
+                    {% if service.photos|length > 0 %}
+                        <img src="{{ asset('uploads/' ~ service.photos[0].filename) }}">
+                    {% endif %}
+                </div>
+
+                <div class="card__content">
+                    <h3 class="card__name">{{ service.name }}</h3>
+                    <p class="card__description">{{ service.description }}</p>
+                    <div class="card__meta">
+                        <p class="roomCard__price">{{ service.price|round }}€</p>
+                        {% if service.time < 60 %}
+                            <p>{{ service.time }}min</p>
+                        {% else %}
+                            <p>{{ service.time / 60 }}h</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

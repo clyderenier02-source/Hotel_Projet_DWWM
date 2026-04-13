@@ -1,11 +1,26 @@
-@use '../abstract/variables' as *;
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
 
-.admin p {
-    color: black;
-    font-size: 2rem;
-    font-family: $font-text;
-}
+.admin {
+    main {
+        background-color: $admin-bg;
 
-.admin main {
-    background-color: #f4f6f9;
+        p {
+            color: $admin-text-dark;
+            font-size: 1rem;
+            padding: 0;
+            font-family: $font-text;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: $font-text;
+        }
+    }
+
+    h1, h2, h3, h4 {
+        font-family: $font-title;
+        color: $forest-deep;
+        padding: 0;
+    }
 }

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<section class="pageHero">
+    <div class="pageHero__breadcrumb">
+        <a href="/home">Accueil</a>
+        <span>»</span>
+        <p>S'inscrire</p>
+    </div>
+</section>
+
+<section class="loginForm">
+    {% if registrationForm.vars.errors|length > 0 %}
+        <div class="loginForm__error">{{ form_errors(registrationForm) }}</div>
+    {% endif %}
+
+    <div class="loginForm__card">
+        <div class="loginForm__header">
+            <h1 class="loginForm__title">Créer un compte</h1>
+            <p class="loginForm__subtitle">Rejoignez la communauté</p>
+        </div>
+
+        {{ form_start(registrationForm, { attr: { class: 'loginForm__wrapper' } }) }}
+            <div class="loginForm__field">
+                {{ form_label(registrationForm.email, 'Email', { label_attr: { class: 'loginForm__label' } }) }}
+                {{ form_widget(registrationForm.email, { attr: { class: 'loginForm__input', placeholder: 'votre@email.com' } }) }}
+                {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="loginForm__field">
+                {{ form_label(registrationForm.plainPassword, 'Mot de passe', { label_attr: { class: 'loginForm__label' } }) }}
+                {{ form_widget(registrationForm.plainPassword, { attr: { class: 'loginForm__input', placeholder: 'password' } }) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            <div class="loginForm__field loginForm__field--terms">
+                {{ form_widget(registrationForm.agreeTerms, { attr: { class: 'loginForm__agreeTerms' } }) }}
+                {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions d'utilisation", { label_attr: { class: 'loginForm__termsLabel' } }) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+            <button type="submit" class="loginForm__button">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+        <p class="loginForm__switch">Déjà un compte ? <a href="/login">Se connecter</a></p>
+    </div>
+</section>
+{% endblock %}

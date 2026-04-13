@@ -1,13 +1,25 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Edit Room{% endblock %}
+{% block title %}Modifier{{ room.name }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Room</h1>
+<div class="admin-room-form">
+    <div class="admin-room-form__header">
+        <h1 class="admin-room-form__titlePage">Modifier la chambre</h1>
+        <a href="{{ path('app_admin_room_index') }}" class="admin-room-form__btn--back">Retour aux chambres</a>
+    </div>
+    
+    <div class="admin-room-form__card">
+        {{ form_start(form, { attr: { id: 'edit_form' } }) }}
+        <div class="admin-room-form__form">
+            {% include 'admin/room/_form.html.twig' %}
+        </div>
+        {{ form_end(form) }}
 
-    {{ include('admin/room/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_room_index') }}">back to list</a>
-
-    {{ include('admin/room/_delete_form.html.twig') }}
+        <div class="admin-room-form__actions">
+            {{ include('admin/room/_delete_form.html.twig', { room: room }) }}
+            <button form="edit_form" type="submit" class="admin-room-form__btn--save">Enregistrer</button>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,125 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin .admin-contact-show {
+    @include admin-page-wrapper;
+
+    &__header {
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__btn--back {
+        @include admin-btn-show;
+    }
+
+    &__card {
+        @include admin-card;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        @include tablet {
+            margin-top: 2rem;
+        }
+
+        @include desktop {
+            gap: 2rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem 2rem;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid $admin-border-light;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        @include desktop {
+            border-bottom: none;
+        }
+    }
+
+    &__label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $admin-text-muted;
+
+        @include desktop {
+            font-size: 0.9rem;
+        }
+    }
+
+    &__value {
+        font-size: 0.9rem;
+        color: $forest-deep;
+        
+        @include desktop {
+            font-size: 1rem;
+        }
+    }
+
+    &__email {
+        font-size: 0.9rem;
+        color: $leaf-dark;
+        
+        @include desktop {
+            font-size: 1rem;
+        }
+        
+    }
+
+    &__message {
+        font-size: 0.9rem;
+        color: $forest-deep;
+
+        @include desktop {
+            font-size: 1rem;
+        }
+    }
+
+    &__actions {
+        @include admin-meta-separator;
+        gap: 0.6rem;
+
+        @include desktop {
+            justify-content: flex-start;
+        }
+    }
+
+    &__btn--delete {
+        @include admin-btn-delete;
+    }
+
+    &__btn--reply {
+        @include admin-btn-show;
+    }
+}

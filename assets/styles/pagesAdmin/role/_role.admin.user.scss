@@ -1,0 +1,127 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.user--admin {
+    @include admin-page-wrapper;
+
+    .user {
+
+        &__header {
+            @include admin-page-header;
+
+            @include desktop {
+                min-width: 900px;
+            }
+        }
+
+        &__titlePage {
+            @include admin-page-title;
+        }
+
+        &__item {
+            @include admin-list;
+            margin-top: 1rem;
+
+            @include desktop {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.4rem;
+                width: 60%;
+                min-width: 900px;
+                margin-inline: auto;
+            }
+        }
+
+        &__card {
+            @include admin-card;
+        }
+
+        &__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        &__identity {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        &__email {
+            font-size: 0.95rem;
+            font-family: $font-title;
+            color: $forest-deep;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @include tablet {
+                font-size: 1.2rem;
+            }
+
+            @include desktop {
+                font-size: 1.25rem;
+            }
+        }
+
+        &__roles {
+            font-size: 0.8rem;
+            color: $admin-text-subtle;
+            font-family: $font-text;
+
+            @include tablet {
+                font-size: 1rem;
+            }
+
+            @include desktop {
+                font-size: 1rem;
+            }
+        }
+
+        &__actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        &__btn {
+            padding: 0.4rem 0.9rem;
+            border-radius: $radius-btn;
+            font-size: 0.8rem;
+            font-family: $font-text;
+            border: none;
+            cursor: pointer;
+
+            @include tablet {
+                font-size: 1rem;
+            }
+
+            &--success {
+                background: $color-success-bg;
+                color: $color-success-text;
+
+                &:hover {
+                    background: $color-success-hover;
+                    color: $white;
+                }
+            }
+
+            &--danger {
+                background: $color-danger-bg;
+                color: $color-danger-text;
+
+                &:hover {
+                    background: $color-danger-hover;
+                    color: $white;
+                }
+            }
+        }
+
+        &__empty {
+            @include admin-empty-state;
+        }
+    }
+}

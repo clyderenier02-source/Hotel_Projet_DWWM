@@ -1,51 +1,107 @@
-@use '../abstract/variables' as *;
-@use '../components/base' as *;
+@use "../abstract/variables" as *;
+@use "../components/base" as *;
+@use "../abstract/mixins" as *;
 
 footer {
     background-color: $forest-dark;
 }
 
-.footer-img {
+.footer-main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+
+    @include desktop {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 5rem;
+        gap: 2rem;
+    }
 }
 
-.footer-img img {
-    padding-top: 3rem;
-    width: 40%;
+.footer-img {
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    img {
+        padding-top: 2rem;
+        width: 40%;
+
+        @include desktop {
+            padding-top: 0;
+            width: 190px;
+        }
+    }
+}
+
+.footer-items {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 1rem 0;
+
+    @include desktop {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.2rem 1.5rem;
+        padding: 0;
+    }
 }
 
 .footer-item {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-size: 2rem;
-    padding: 0.7rem;
+    font-size: 0.85rem;
+    padding: 0.4rem;
+
+    @include desktop {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+    }
 }
 
 .footer-follow {
     display: flex;
     justify-content: center;
-    padding-top: 2rem;
+    padding-top: 1.2rem;
+
+    @include desktop {
+        padding-top: 0;
+        flex-shrink: 0;
+    }
+
+    &_sub {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     &_img {
         display: flex;
-        padding-top: 1rem;
-        gap: 0.7rem;
+        padding-top: 0.8rem;
+        gap: 0.6rem;
+
+        @include desktop {
+            gap: 0.8rem;
+        }
+
+        img {
+            width: 28px;
+
+            @include desktop { width: 32px; }
+        }
     }
 
-    &_img img {
-        width: 50px;
-    }
-}
-
-.footer-follow p {
-    padding: 0;
+    p { padding: 0; }
 }
 
 .footer_mentions {
@@ -53,8 +109,15 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
-    border: 2px solid $gold;
-    padding: 2rem;
-    margin-top: 6rem;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba($gold, 0.4);
+    padding: 1rem;
+    margin-top: 0.5rem;
+
+    @include desktop {
+        flex-direction: row;
+        gap: 2rem;
+        padding: 1rem 2rem;
+        font-size: 0.85rem;
+    }
 }

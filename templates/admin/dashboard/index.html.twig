@@ -4,39 +4,49 @@
 
 {% block body %}
 <section class="dashboard">
-    <a href="{{ asset('/admin/reservation') }}" class="dashboard__card">
-        <h4>Réservation</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+<div class="dashboard__header">
+            <h1 class="dashboard__titlePage">Menu</h1>
+        </div>
+    <div class="dashboard__grid">
+        <a href="{{ asset('/admin/reservation') }}" class="dashboard__card">
+            <h4>Réservation</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/room') }}" class="dashboard__card">
-        <h4>Chambre</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/room') }}" class="dashboard__card">
+            <h4>Chambre</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/service') }}" class="dashboard__card">
-        <h4>Service</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/service') }}" class="dashboard__card">
+            <h4>Service</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/opinion') }}" class="dashboard__card">
-        <h4>Avis</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/opinion') }}" class="dashboard__card">
+            <h4>Avis</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/contact') }}" class="dashboard__card">
-        <h4>Contact</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/contact') }}" class="dashboard__card">
+            <h4>Contact</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/payment') }}" class="dashboard__card">
-        <h4>Payment</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/payment') }}" class="dashboard__card">
+            <h4>Paiement</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-    <a href="{{ asset('/admin/photo') }}" class="dashboard__card">
-        <h4>Photo</h4>
-        <i class="fa-solid fa-arrow-down"></i>
-    </a>
+        <a href="{{ asset('/admin/photo') }}" class="dashboard__card">
+            <h4>Photo</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+
+        <a href="{{ asset('/admin/user') }}" class="dashboard__card">
+            <h4>Role</h4>
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+    </div>
 </section>
 {% endblock %}

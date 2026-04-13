@@ -1,26 +1,35 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .opinionForm {
     min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+        padding: 2rem;
+    }
 
     &__card {
         width: 100%;
-        max-width: 600px;
+        max-width: 560px;
         background: rgba($white, 0.04);
         border: 1px solid rgba($leaf-light, 0.15);
-        border-radius: 24px;
-        padding: 2.5rem;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        border-radius: $radius-card;
+        padding: 1.5rem;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+        @include tablet {
+            padding: 2rem
+        }
     }
 
     &__header {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     &__badge {
@@ -28,42 +37,45 @@
         background: rgba($gold, 0.1);
         border: 1px solid rgba($gold, 0.4);
         border-radius: 50px;
-        padding: 4px 14px;
+        padding: 3px 12px;
         color: $gold;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         letter-spacing: 2px;
         text-transform: uppercase;
+        font-family: $font-text;
     }
 
     &__title {
         color: $white;
-        font-size: 2rem;
+        font-size: 1.3rem;
         font-weight: normal;
         margin: 0.5rem 0 0.3rem;
+        font-family: $font-title;
     }
 
     &__subtitle {
         color: $leaf-light;
-        font-size: 1.5rem;
+        font-size: 0.85rem;
         margin: 0;
         opacity: 0.7;
+        font-family: $font-text;
     }
 
     &__rating {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     &__stars {
         display: flex;
         justify-content: center;
         gap: 8px;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
         cursor: pointer;
     }
 
     &__star {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
         color: $forest-deep;
         transition: all 0.15s ease;
         user-select: none;
@@ -72,15 +84,16 @@
         &--hovered,
         &--selected {
             color: $gold !important;
-            text-shadow: 0 0 20px rgba($gold, 0.6);
+            text-shadow: 0 0 15px rgba($gold, 0.5);
             transform: scale(1.15);
         }
     }
 
     &__rating-label {
         color: $gold;
-        font-size: 1rem;
+        font-size: 0.8rem;
         margin: 0;
+        font-family: $font-text;
 
         &--empty {
             color: $leaf-light;
@@ -90,31 +103,33 @@
 
     &__field {
         position: relative;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
     }
 
     &__label {
         display: block;
         color: $leaf-light;
-        font-size: 1.1rem;
+        font-size: 0.8rem;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
+        font-family: $font-text;
     }
 
     &__textarea {
         width: 100%;
         background: rgba($white, 0.04);
         border: 1px solid rgba($leaf-light, 0.2);
-        border-radius: 12px;
-        padding: 1rem;
+        border-radius: $radius-btn;
+        padding: 0.8rem 1rem;
         color: $white;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         resize: vertical;
         outline: none;
         transition: border-color 0.2s;
         box-sizing: border-box;
         line-height: 1.6;
+        font-family: $font-text;
 
         &::placeholder {
             color: rgba($leaf-light, 0.3);
@@ -128,27 +143,27 @@
     &__counter {
         display: block;
         text-align: right;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         color: rgba($leaf-light, 0.5);
         margin-top: 0.3rem;
+        font-family: $font-text;
 
-        &--limit {
-            color: #ef4444;
-        }
+        &--limit { color: #ef4444; }
     }
 
     &__submit {
         width: 100%;
-        padding: 1rem;
-        border-radius: 12px;
+        padding: 0.9rem;
+        border-radius: $radius-btn;
         border: none;
         background: rgba($white, 0.05);
         color: rgba($white, 0.3);
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         font-weight: 600;
         cursor: not-allowed;
         transition: all 0.2s ease;
         letter-spacing: 0.5px;
+        font-family: $font-title;
 
         &--ready {
             background: $gold;
@@ -157,24 +172,23 @@
 
             &:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba($gold, 0.35);
+                box-shadow: 0 6px 20px rgba($gold, 0.3);
             }
 
-            &:active {
-                transform: translateY(0);
-            }
+            &:active { transform: translateY(0); }
         }
     }
 
     &__errors {
         color: #ef4444;
-        font-size: 0.85rem;
-        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+        font-family: $font-text;
     }
 
     &__star {
-        width: 2.8rem;
-        height: 2.8rem;
+        width: 1.8rem;
+        height: 1.8rem;
         cursor: pointer;
         transition: all 0.2s ease;
         filter: brightness(0) saturate(100%) invert(14%) sepia(22%) saturate(943%) hue-rotate(104deg) brightness(99%) contrast(89%);

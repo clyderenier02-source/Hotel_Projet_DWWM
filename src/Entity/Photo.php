@@ -69,7 +69,7 @@ class Photo
     public function validate(ExecutionContextInterface $context)
     {
         if ($this->room === null && $this->service === null) {
-            $context->buildViolation('Vous deve choisir une chambre OU un service.')
+            $context->buildViolation('Vous devez choisir une chambre OU un service.')
                 ->atPath('room')
                 ->addViolation();
         }

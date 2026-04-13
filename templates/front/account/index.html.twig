@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil Eden Palm{% endblock %}
+
+{% block body %}
+<section class="account">
+    <div class="account__container">
+        <div class="account__hero">
+            <div class="account__avatar">
+                <p>{{ user.email|slice(0, 1)|upper }}</p>
+            </div>
+            <div class="account__heroInfos">
+                <p class="account__badge">Membre Eden Palm</p>
+                <h1 class="account__email">{{ user.email }}</h1>
+            </div>
+        </div>
+
+        {% if app.user %}
+            {% for message in app.flashes('success') %}
+                <div class="account__flash">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+
+            <div class="account__grid">
+                <a href="{{ path('app_reservation_index') }}" class="account__card">
+                    <div class="account__cardContent">
+                        <p class="account__cardTitle">Mes réservations</p>
+                        <p class="account__cardSub">Consulter l'historique de vos séjours</p>
+                    </div>
+                </a>
+
+                <a href="{{ path('app_opinion_new') }}" class="account__card">
+                    <div class="account__cardContent">
+                        <p class="account__cardTitle">Laisser un avis</p>
+                        <p class="account__cardSub">Partagez votre expérience Eden Palm</p>
+                    </div>
+                </a>
+
+                <a href="{{ path('app_opinion_index') }}" class="account__card">
+                    <div class="account__cardContent">
+                        <p class="account__cardTitle">Les avis clients</p>
+                        <p class="account__cardSub">Découvrez ce que nos hôtes pensent</p>
+                    </div>
+                </a>
+
+                <a href="{{ path('app_contact_new') }}" class="account__card">
+                    <div class="account__cardContent">
+                        <p class="account__cardTitle">Nous contacter</p>
+                        <p class="account__cardSub">Une question ? Notre équipe vous répond</p>
+                    </div>
+                </a>
+            </div>
+
+            <a href="{{ logout_path() }}" class="account__logout">Déconnexion</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

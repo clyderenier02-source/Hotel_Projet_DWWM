@@ -1,0 +1,106 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin .payment--admin {
+    @include admin-page-wrapper;
+
+    .payment {
+
+        &__header {
+            @include admin-page-header;
+
+            @include desktop {
+                min-width: 900px;
+            }
+        }
+
+        &__titlePage {
+            @include admin-page-title;
+        }
+
+        &__item {
+            @include admin-list;
+
+            @include desktop {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.6rem;
+                width: 60%;
+                min-width: 900px;
+                margin-inline: auto;
+            }
+        }
+
+        &__card {
+            @include admin-card;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        &__title {
+            font-size: 1rem;
+
+            @include tablet {
+                font-size: 1.1rem;
+            }
+
+            @include desktop {
+                font-size: 1.2rem;
+            }
+        }
+
+        &__mode {
+            font-size: 0.8rem;
+            color: $leaf-dark;
+        }
+
+        &__meta {
+            @include admin-meta-separator;
+        }
+
+        &__details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        &__amount {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: $gold;
+        }
+
+        &__date {
+            font-size: 0.8rem;
+            color: $admin-text-muted;
+        }
+
+        &__badge {
+            &--paid {
+                @include status-badge($color-success-bg, $color-success-text);
+            }
+
+            &--pending {
+                @include status-badge($color-warning-bg, $color-warning-text);
+            }
+
+            &--failed {
+                @include status-badge($color-danger-bg, $color-danger-text);
+            }
+        }
+
+        &__empty {
+            @include admin-empty-state;
+        }
+    }
+}

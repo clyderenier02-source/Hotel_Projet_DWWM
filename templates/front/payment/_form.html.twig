@@ -1,0 +1,44 @@
+{{ form_start(form, {
+    action: path('app_payment_new', {id: room.id}),
+    method: 'POST',
+}) }}
+    <section class="paymentForm">
+        <h3 class="paymentForm__title">Résumé du séjour</h3>
+
+        <div class="paymentForm__content">
+
+            <div class="paymentForm__roomImage">
+                {% if room.photos|length > 0 %}
+                    <img src="{{ asset('uploads/' ~ room.photos[0].filename) }}">
+                {% endif %}
+            </div>
+
+            <div class="paymentForm__infos">
+                <h4 class="paymentForm__roomName"><span>Chambre : </span>{{ room.name }}</h4>
+
+                <div class="paymentForm__price">
+                    <p>Prix total : <span>{{ price }} €</span></p>
+                </div>
+
+                <div class="paymentForm__dates">
+                    <p>Dates : {{ arrived|date('d-m-Y') }} / {{ return|date('d-m-Y') }}</p>
+                </div>
+
+                <div class="paymentForm__checkin">
+                    <p>Arrivée : à partir de 14h00</p>
+                    <p>Départ : avant 11h00</p>
+                </div>
+
+                <div class="paymentForm__payment">
+                    {{ form_row(form.mode, {
+                        label: 'Mode de paiement',
+                        label_attr: { class: 'paymentForm__label' },
+                        attr: { class: 'paymentForm__input' }
+                    }) }}
+                    <button class="paymentForm__submit">PAYER MAINTENANT</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{{ form_end(form) }}

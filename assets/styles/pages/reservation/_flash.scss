@@ -1,12 +1,27 @@
 @use "../../abstract/variables" as *;
 @use '../../components/base' as *;
+@use '../../abstract/mixins' as *;
 
 .reservationFlash {
+    padding: 0 1rem;
+
+    @include tablet {
+        padding: 0 3rem;
+    }
+
+    @include desktop {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 3rem;
+    }
 
     &__alert {
-    color: $white;
-    font-size: 2rem;
-    padding-top: 3rem;
-    padding-left: 5rem;
+        color: $white;
+        font-size: 0.9rem;
+        padding: 1rem 1.5rem;
+        background: rgba($leaf-light, 0.1);
+        border-left: 3px solid $leaf-light;
+        border-radius: $radius-btn;
+        margin-top: 1rem;
     }
 }

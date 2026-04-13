@@ -1,11 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
-{% block title %}New Service{% endblock %}
+{% block title %}Nouveau service{% endblock %}
 
 {% block body %}
-    <h1>Create new Service</h1>
+<div class="admin-service-form">
+    <div class="admin-service-form__header">
+        <h1 class="admin-service-form__titlePage">Nouveau service</h1>
+        <a href="{{ path('app_admin_service_index') }}" class="admin-service-form__btn--back">Retour aux services</a>
+    </div>
 
-    {{ include('admin/service/_form.html.twig') }}
+    <div class="admin-service-form__card">
+        {{ form_start(form) }}
+        <div class="admin-service-form__form">
+            {% include 'admin/service/_form.html.twig' %}
 
-    <a href="{{ path('app_admin_service_index') }}">back to list</a>
+            <div class="admin-service-form__actions">
+                <a href="{{ path('app_admin_service_index') }}" class="admin-service-form__btn--cancel">Annuler</a>
+                <button type="submit" class="admin-service-form__btn--save">Créer le service</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

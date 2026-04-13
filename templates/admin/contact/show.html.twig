@@ -1,36 +1,47 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Contact — {{ contact.email }}{% endblock %}
 
 {% block body %}
-    <h1>Contact</h1>
+<div class="admin-contact-show">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ contact.email }}</td>
-            </tr>
-            <tr>
-                <th>Subject</th>
-                <td>{{ contact.subject }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ contact.message }}</td>
-            </tr>
-            <tr>
-                <th>Date_send</th>
-                <td>{{ contact.dateSend ? contact.dateSend|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="admin-contact-show__header">
+        <h1 class="admin-contact-show__titlePage">Message reçu</h1>
+        <a href="{{ path('app_admin_contact_index') }}" class="admin-contact-show__btn--back"> Retour aux contacts</a>
+    </div>
 
-    <a href="{{ path('app_admin_contact_index') }}">back to list</a>
+    <div class="admin-contact-show__card">
+        <div class="admin-contact-show__info">
+            <div class="admin-contact-show__item">
+                <p class="admin-contact-show__label">Expéditeur</p>
+                <p class="admin-contact-show__email">{{ contact.email }}</p>
+            </div>
 
-    {{ include('admin/contact/_delete_form.html.twig') }}
+            <div class="admin-contact-show__item">
+                <p class="admin-contact-show__label">Sujet</p>
+                <p class="admin-contact-show__value">{{ contact.subject }}</p>
+            </div>
+
+            <div class="admin-contact-show__item">
+                <p class="admin-contact-show__label">Date d'envoi</p>
+                <p class="admin-contact-show__value">{{ contact.dateSend|date('d/m/Y') }}</p>
+            </div>
+
+            <div class="admin-contact-show__item">
+                <p class="admin-contact-show__label">Message</p>
+                <p class="admin-contact-show__message">{{ contact.message }}</p>
+            </div>
+        </div>
+
+        <div class="admin-contact-show__actions">
+            <form method="post" action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" onsubmit="return confirm('Supprimer ce message ?')">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+                <button type="submit" class="admin-contact-show__btn--delete">Supprimer</button>
+            </form>
+            <a href="mailto:{{ contact.email }}" class="admin-contact-show__btn--reply">
+                Répondre par email
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,14 +1,75 @@
 @use "../../abstract/variables" as *;
 @use '../../components/base' as *;
+@use '../../abstract/mixins' as *;
 
 .opinionHome {
-    padding: 8rem 3rem 3rem 3rem;
+    padding: 3rem 1rem;
+
+    @include tablet {
+        padding: 4rem 2rem;
+    }
+
+    @include desktop {
+        padding: 4rem 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        & h2 {
+            padding: 0;
+        }
+
+        @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__flash {
+        width: 100%;
+
+        @include tablet {
+            order: 3;
+            width: 100%;
+        }
+    }
+
+    &__card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @include desktop {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 
     &__content {
-        padding: 3rem;
+        padding: 1.5rem;
         background-color: $forest-dark;
-        border-radius: 15px;
-        margin-bottom: 5rem;
+        border-radius: $radius-card;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: $gold;
+            border-top-left-radius: $radius-card;
+            border-top-right-radius: $radius-card;
+        }
 
         & p {
             padding: 0;
@@ -16,14 +77,19 @@
     }
 
     &__meta {
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
+        
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
 
         & p {
-            padding-bottom: 1rem;
+            padding-bottom: 0.5rem;
         }
 
         & span {
-            font-size: 2rem;
+            font-size: 0.9rem;
             color: $gold;
         }
     }
@@ -32,22 +98,24 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 1.5rem;
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+        font-size: 0.8rem;
+        padding-top: 0.8rem;
+        padding-bottom: 1rem;
+        border-top: 1px solid rgba($white, 0.1);
     }
 
     &__stars {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 0.2rem;
     }
-    
+
     &__star {
-        height: 2rem;
+        height: 1.2rem;
 
         &--filled {
-            filter: brightness(0) saturate(100%) invert(72%) sepia(35%) saturate(600%) hue-rotate(355deg) brightness(95%); // $gold
+            filter: brightness(0) saturate(100%) invert(72%) sepia(35%) saturate(600%) hue-rotate(355deg) brightness(95%);
         }
 
         &--empty {
@@ -56,20 +124,25 @@
     }
 
     &__btn {
-        margin-top: 2rem;
         text-align: center;
-        padding: 2rem;
+        padding: 1rem;
         background-color: $gold;
-        border-radius: 15px;
+        border-radius: $radius-btn;
 
-        & p {
+        & p { 
             padding: 0;
+            color: $forest-deep;
+            font-weight: 600;
         }
     }
 }
 
 .flash {
     color: $white;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba($leaf-light, 0.1);
+    border-left: 3px solid $leaf-light;
+    border-radius: $radius-btn;
 }

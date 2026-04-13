@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homePreview {
     display: flex;
@@ -7,11 +8,39 @@
     flex-direction: column;
     align-items: center;
     background-color: $forest-dark;
-    padding-bottom: 2rem;
+    padding: 0 1rem 2rem 1rem;
+
+    @include tablet {
+        padding: 0 2rem 2rem 2rem;
+    }
+
+    @include desktop {
+        padding: 3rem 4rem 4rem 4rem;
+    }
 
     &__card {
         text-align: center;
-        padding: 4rem;
+
+        & h2 {
+            padding-top: 3rem;
+        }
+
+        & p {
+            padding-bottom: 2rem !important;
+        }
+
+        @include desktop {
+            max-width: 700px;
+
+            & h2 {
+                font-size: 2rem;
+            }
+
+            & p {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+        }
     }
 
     &__content {
@@ -19,7 +48,18 @@
         justify-content: center;
         width: 70%;
         background: linear-gradient($leaf-dark, $forest-dark);
-        border-radius: 1rem;
+        border-radius: 0.6rem;
+
+        @include tablet {
+            width: 85%;
+        }
+
+        @include desktop {
+            width: 90%;
+            max-width: 1300px;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
     }
 
     &__gallery {
@@ -27,9 +67,35 @@
         flex-direction: column;
         justify-content: center;
         width: 80%;
-    }
 
-    &__gallery img{
-        padding: 4rem 3rem;
+        @include tablet {
+            flex-direction: row;
+            width: 100%;
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+
+        @include desktop {
+            gap: 1rem;
+            padding: 1.5rem;
+
+            & img {
+                border-radius: 0.5rem;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+        }
+
+        & img {
+            padding: 1rem 0.6rem 0 0.6rem;
+
+            @include tablet {
+                width: 31%;
+                padding: 0;
+            }
+        }
     }
 }

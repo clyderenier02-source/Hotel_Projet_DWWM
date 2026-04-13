@@ -1,0 +1,121 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin-room-form {
+    @include admin-page-wrapper;
+
+    &__header {
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__btn--back {
+        @include admin-btn-show;
+    }
+
+    &__card {
+        @include admin-card;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        @include tablet {
+            margin-top: 2rem;
+        }
+
+        @include desktop {
+            margin-top: 2.5rem;
+            gap: 1.8rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem 2rem;
+        }
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        &:first-of-type {
+            @include desktop {
+                grid-column: 1 / -1;
+            }
+        }
+
+        &:last-of-type {
+            @include desktop {
+                grid-column: 1 / -1;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: $admin-text-muted;
+        font-family: $font-text;
+    }
+
+    &__input,
+    &__textarea {
+        @include admin-form-input;
+    }
+
+    &__textarea {
+        resize: vertical;
+        min-height: 100px;
+        line-height: 1.5;
+    }
+
+    &__actions {
+        @include admin-meta-separator;
+        gap: 0.6rem;
+    }
+
+    &__btn--save {
+        display: inline-flex;
+        align-items: center;
+        background: $gold;
+        color: $white;
+        padding: 0.55rem 1.3rem;
+        border-radius: $radius-btn;
+        font-size: 0.85rem;
+        font-family: $font-text;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background: darken($gold, 10%);
+        }
+    }
+
+    &__btn--cancel {
+        @include admin-btn-show;
+    }
+
+    &__btn--delete {
+        @include admin-btn-delete;
+    }
+}

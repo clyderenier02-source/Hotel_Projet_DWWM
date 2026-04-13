@@ -1,76 +1,122 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base.admin' as *;
+@use "../../abstract/mixins" as *;
 
 .admin-room {
-    padding: 3rem;
+    @include admin-page-wrapper;
 
     &__header {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__btn--create {
+        display: inline-flex;
         align-items: center;
-        font-size: 3.5rem;
-        margin-bottom: 2rem;
+        gap: 0.4rem;
+        background: $gold;
+        color: $white;
+        padding: 0.5rem 1rem;
+        border-radius: $radius-btn;
+        font-size: 0.9rem;
+        text-decoration: none;
+        font-family: $font-text;
 
-        &-sub {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        &:hover {
+            background: darken($gold, 10%);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
         }
 
-        & a {
-            font-size: 2rem;
-            background-color: $gold;
-            border-radius: 15px;
-            padding: 1rem 2rem;
-        }
-
-        &::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 1px;
-            background-color: black;
-            margin-top: 3rem;
-            margin-bottom: 10px;
+        @include desktop {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
         }
     }
 
     &__card {
-        background-color: $white;
-        margin-bottom: 2rem;
-        padding: 2rem;
-        border-radius: 15px;
+        @include admin-card;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+
+        &:hover {
+            transform: translateY(-3px);
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+        }
+
+        &-name {
+            font-size: 1rem;
+            font-family: $font-title;
+            color: $forest-deep;
+            margin: 0;
+
+            @include tablet {
+                font-size: 1.1rem;
+            }
+        }
+
+        &-description {
+            font-size: 0.85rem !important;
+            color: $admin-text-subtle !important;
+            line-height: 1.4;
+        }
+
+        &-price {
+            font-size: 0.9rem !important;
+            font-weight: 600;
+            color: $gold !important;
+        }
 
         &-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            & p {
-                padding: 0;
-            }
+            @include admin-meta-separator;
 
             &-mode {
                 display: flex;
-                text-align: right;
-
-                & a {
-                    background-color: $gold;
-                    padding: 1rem 2rem;
-                    border-radius: 15px;
-                    font-size: 1.9rem;
-                    margin-right: 1rem;
-                }
+                align-items: center;
+                gap: 0.4rem;
             }
         }
     }
-}
 
-.btn {
-    border-radius: 15px;
-    padding: 1rem 2rem;
-    font-size: 1.9rem;
-    font-family: $font-text;
+    &__btn {
+
+        &--edit {
+            @include admin-btn-edit;
+        }
+
+        &--delete {
+            @include admin-btn-delete;
+        }
+    }
+
+    &__empty {
+        @include admin-empty-state;
+    }
 }

@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homeAppart {
     background-image: 
@@ -8,19 +9,61 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    padding: 0 1rem;
+
+    @include tablet {
+        padding: 0 3rem;
+    }
+
+    @include desktop {
+        padding: 4rem 5rem;
+    }
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include tablet {
+            gap: 3rem;
+        }
+
+        @include desktop {
+            flex-direction: row-reverse;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+    }
+
+    &__line {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid $admin-border-light;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
     }
 
     &__image {
-        margin-top: 7rem;
+        margin-top: 5rem;
         border-radius: 10px;
         border: 2px solid $gold;
         margin-bottom: 5rem;
+        width: 100%;
+
+        @include tablet {
+            width: 472px;
+            margin-bottom: 0;
+        }
+
+        @include desktop {
+            width: 46%;
+            flex-shrink: 0;
+            margin-top: 0;
+        }
     }
 
     &__text {
@@ -28,17 +71,32 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0 5rem;
         font-size: 2rem;
         text-align: center;
+
+        @include tablet {
+            font-size: 1.5rem;
+        }
+
+        @include desktop {
+            align-items: flex-start;
+            text-align: left;
+            font-size: 1rem;
+
+            & h2 {
+                text-align: left; 
+            }
+
+            & p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
     }
 
     &__button {
-        margin-bottom: 5rem;
-    }
-
-    hr {
-        width: 80%;
-        margin: 1rem;
+        display: inline-block;
+        margin: 1rem 0 3rem 0;
+        @include button;
     }
 }

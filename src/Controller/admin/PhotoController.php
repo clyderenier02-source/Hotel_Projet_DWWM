@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Controller\admin;
+namespace App\Controller\Admin;
 
 use App\Entity\Photo;
-use App\Form\PhotoType;
+use App\Form\Admin\PhotoType;
 use App\Repository\PhotoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -81,12 +80,28 @@ final class PhotoController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_photo_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Photo $photo, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Photo $photo, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PhotoType::class, $photo);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form->get('filename')->getData();
+
+            if ($file) {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+                $file->move(
+                    $this->getParameter('uploads_directory'),
+                    $newFilename
+                );
+
+                $photo->setFilename($newFilename);
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_photo_index', [], Response::HTTP_SEE_OTHER);

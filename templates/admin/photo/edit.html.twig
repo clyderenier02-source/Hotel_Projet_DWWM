@@ -1,13 +1,33 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Edit Photo{% endblock %}
+{% block title %}Modifier la photo #{{ photo.id }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Photo</h1>
+<div class="admin-photo-form">
+    <div class="admin-photo-form__header">
+        <h1 class="admin-photo-form__titlePage">Modifier la photo</h1>
+        <a href="{{ path('app_admin_photo_index') }}" class="admin-photo-form__btn--back">Retour aux photos</a>
+    </div>
 
-    {{ include('admin/photo/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="admin-photo-form__card">
+        {{ form_start(form, { attr: { id: 'edit_form' } }) }}
+            <div class="admin-photo-form__form">
+                {% if photo.filename %}
+                    <div class="admin-photo-form__preview">
+                        <img src="{{ asset('uploads/' ~ photo.filename) }}" alt="Aperçu actuel">
+                    </div>
+                {% endif %}
 
-    <a href="{{ path('app_admin_photo_index') }}">back to list</a>
+            <div class="admin-photo-form__item">
+                {% include 'admin/photo/_form.html.twig' %}
+                {{ form_end(form) }}
 
-    {{ include('admin/photo/_delete_form.html.twig') }}
+                <div class="admin-photo-form__actions">
+                    {{ include('admin/photo/_delete_form.html.twig', { photo: photo }) }}
+                    <button form="edit_form" type="submit" class="admin-photo-form__btn--save">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

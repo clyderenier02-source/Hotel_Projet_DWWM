@@ -1,18 +1,54 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homeMap {
     background-color: $background-map;
-    opacity: 94%;
+    padding: 0 1rem 2rem 1rem;
 
-    &__text {
-        text-align: center;
+    @include tablet {
+        padding: 0 3rem 2rem 3rem;
+    }
+
+    @include desktop {
         padding: 4rem 5rem;
     }
 
-    &__button {
-        margin-bottom: 3rem;
-        width: 80%;
+    &__inner {
+        @include desktop {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    }
+
+    &__text {
+        text-align: center;
+
+        & h2 {
+            padding-top: 3rem;
+        }
+
+        & p {
+            padding-bottom: 2rem !important;
+        }
+
+        @include desktop {
+            text-align: left;
+
+            & h2 {
+                padding-top: 0;
+                font-size: 1.8rem;
+            }
+
+            & p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
     }
 
     &__iframe {
@@ -21,10 +57,20 @@
     }
 
     &__iframe iframe {
-        width: 65%;
-        height: 350px;
-        border-radius: 20px;
-        border: 5px solid $gold;
-        margin-bottom: 10rem;
+        width: 100%;
+        border-radius: $radius-card;
+        border: 2px solid $gold;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            width: 80%;
+            height: 300px;
+        }
+
+        @include desktop {
+            width: 90%;
+            height: 400px;
+            margin-bottom: 0;
+        }
     }
 }

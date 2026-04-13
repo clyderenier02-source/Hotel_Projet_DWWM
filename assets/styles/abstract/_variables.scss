@@ -1,10 +1,47 @@
-$forest-dark: #274237;
-$forest-deep: #1B342A;
-$gold: #D6AB70;
-$white: #ffffff;
-$leaf-light: #63A88C;
-$leaf-dark: #2C5F4A;
-$background-map: #1F4434;
+// Couleurs principales
+$forest-dark:     #274237;
+$forest-deep:     #1B342A;
+$gold:            #D6AB70;
+$white:           #ffffff;
+$leaf-light:      #63A88C;
+$leaf-dark:       #2C5F4A;
+$background-map:  #1F4434;
 
+// Couleurs admin
+$admin-bg:           #f8faf9;
+$admin-bg-alt:       #eef3f1;
+$admin-border:       #e9ecef;
+$admin-border-light: #f1f1f1;
+$admin-text-muted:   #9aa0a6;
+$admin-text-dark:    #4b5563;
+$admin-text-subtle:  #777;
+
+// Couleurs button
+$color-success-bg:   rgba($leaf-light, 0.15);
+$color-success-text: $leaf-dark;
+$color-success-hover: $leaf-light;
+
+$color-warning-bg:   rgba(#ef9f27, 0.15);
+$color-warning-text: #854f0b;
+
+$color-danger-bg:    rgba(#e24b4a, 0.15);
+$color-danger-text:  #a32d2d;
+$color-danger-hover: #e24b4a;
+
+// Border radius
+$radius-card:   10px;
+$radius-btn:    8px;
+$radius-badge:  14px;
+$radius-tag:    4px;
+
+// Ombres légère
+$shadow-card:       0 8px 25px rgba(0, 0, 0, 0.05);
+$shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+// Breakpoints
+$breakpoint-tablet:  768px;
+$breakpoint-desktop: 1025px;
+
+// Typographie
 $font-title: "Forum", serif;
-$font-text: "Inter", sans-serif;
+$font-text:  "Inter", sans-serif;

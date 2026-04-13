@@ -5,26 +5,30 @@
 {% block body %}
 <section class="admin-room">
     <div class="admin-room__header">
-        <div class="admin-room__header-sub">
-            <h4>Chambres</h4>
-        <a href="{{ path('app_admin_room_new') }}">Create new</a>
-        </div>
+        <h1 class="admin-room__titlePage">Chambres</h1>
+
+        <a href="{{ path('app_admin_room_new') }}" class="admin-room__btn admin-room__btn--create">+ Ajouter des chambres</a>
     </div>
+    <div class="admin-room__list">
     {% for room in rooms %}
         <div class="admin-room__card">
             <div class="admin-room__card-content">
-                <h3 class="admin-room__card-name">{{ room.name }}</h3>
-                <p class="admin-room__card-description">{{ room.description | slice(0, 80) ~ '...' }}</p>
+                <div class="admin-room__card-info">
+                    <h3 class="admin-room__card-name">{{ room.name }}</h3>
+                    <p class="admin-room__card-description">{{ room.description | slice(0, 80) ~ '...' }}</p>
 
-                <div class="admin-room__card-actions">
-                    <p class="admin-room__card-price">{{ room.priceNight }}€ / nuit</p>
-                    <div class="admin-room__card-actions-mode">
-                        <a href="{{ path('app_admin_room_edit', {'id': room.id}) }}">Edit</a>
-                        {{ include('admin/room/_delete_form.html.twig') }}
+                    <div class="admin-room__card-actions">
+                        <p class="admin-room__card-price">{{ room.priceNight }}€ / nuit</p>
+
+                        <div class="admin-room__card-actions-mode">
+                            <a href="{{ path('app_admin_room_edit', {'id': room.id}) }}" class="admin-room__btn admin-room__btn--edit">Modifier</a>
+                            {{ include('admin/room/_delete_form.html.twig', { room: room }) }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
+    </div>
 </section>
 {% endblock %}

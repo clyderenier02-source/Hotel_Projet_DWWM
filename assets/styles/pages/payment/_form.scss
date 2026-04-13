@@ -1,8 +1,46 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .paymentForm {
-    padding: 5rem 5rem;
+    padding: 2rem 1.5rem;
+
+    @include tablet {
+        padding: 3rem;
+        margin: 0 auto;
+    }
+
+    @include desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 3rem auto;
+        padding: 3rem 4rem;
+        background: rgba($white, 0.03);
+        border-radius: $radius-card;
+        border: 1px solid rgba($leaf-light, 0.1);
+
+        &__title {
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba($leaf-light, 0.15);
+        }
+
+        &__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        &__infos {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
 
     &__roomImage {
         display: flex;
@@ -10,39 +48,52 @@
         justify-content: center;
         align-items: center;
 
+        @include tablet {
+            align-items: flex-start;
+        }
+
         & img {
             width: 100%;
-            margin: 2rem 0;
+            margin: 1rem 0;
+            border-radius: $radius-card;
+            border: 1px solid rgba($gold, 0.3);
+
+            @include desktop {
+                margin: 0;
+            }
         }
     }
 
     &__roomName {
-        font-size: 2.5rem;
+        font-size: 1.2rem;
+        font-family: $font-title;
         color: $gold;
 
-        & span {
-            color: $white;
-        }
+        & span { color: $white; }
     }
 
     &__price {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
+        font-size: 0.9rem;
     }
 
     p {
         padding: 0;
+        font-size: 0.9rem;
     }
 
     &__dates {
-        padding-bottom: 1.5rem;
+        padding-bottom: 1rem;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
 
         & span {
             color: $white;
-            font-size: 3rem;
-            padding: 0 1rem;
+            font-size: 1.2rem;
+            padding: 0 0.5rem;
         }
     }
 
@@ -50,29 +101,30 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 1rem;
-        
-        & p {
-            padding: 1rem 0 ;
-        }
+
+        & p { padding: 0.5rem 0; }
     }
 
     &__label {
-        font-size: 2rem;
-        color: $white;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba($white, 0.7);
+        font-family: $font-text;
     }
 
     &__input {
-        font-size: 1.5rem;
+        font-size: 0.9rem;
         color: $white;
-        padding: 1rem 0;
+        padding: 0.8rem 0;
+        font-family: $font-text;
     }
 
     &__submit {
         width: 100%;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        cursor: pointer;
     }
 }
 
-.custom-input {
-    margin: 0 1rem;
-}
+.custom-input { margin: 0 0.5rem; }

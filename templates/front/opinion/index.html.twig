@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Laisser un avis Eden Palm{% endblock %}
+
+{% block body %}
+<div class="opinionHome">
+    <div class="opinionHome__header">
+        <h2>Avis de nos clients</h2>
+
+        {% if app.user %}
+            <a href="{{ path('app_opinion_new') }}" class="opinionHome__write">
+                <div class="opinionHome__btn">
+                    <p>Laisser un avis</p>
+                </div>
+            </a>
+        {% endif %}
+
+        <div class="opinionHome__flash">
+            {% for flash in app.flashes('success') %}
+                <div class="flash flash--success">{{ flash }}</div>
+            {% endfor %}
+            {% for flash in app.flashes('error') %}
+                <div class="flash flash--error">{{ flash }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if opinions is empty %}
+        <p class="opinionHome__no-reviews">Aucun avis pour le moment. Soyez le premier !</p>
+    {% else %}
+        <div class="opinionHome__card">
+            {% for opinion in opinions %}
+                <div class="opinionHome__content">
+                    <div class="opinionHome__dates">
+                        <p class="opinionHome__date">{{ opinion.dateSend|date('d/m/Y') }}</p>
+                        <div class="opinionHome__stars">
+                            {% for i in 1..5 %}
+                                {% if i <= opinion.note %}
+                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--filled" alt="étoile">
+                                {% else %}
+                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--empty" alt="étoile vide">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="opinionHome__meta">
+                        <p class="opinionHome__author">{{ opinion.reservation.user.email }}</p>
+                        <span class="opinionHome__note">{{ opinion.note }}/5</span>
+                    </div>
+                    <p class="opinionHome__comment">{{ opinion.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

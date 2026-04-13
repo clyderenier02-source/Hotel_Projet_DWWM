@@ -3,41 +3,38 @@
 {% block title %}Avis clients{% endblock %}
 
 {% block body %}
-<div class="opinionHome">
-    <div class="opinionHome__header">
-        <h2>Avis de nos clients</h2>
-        {% for flash in app.flashes('success') %}
-            <div class="flash flash--success">{{ flash }}</div>
-        {% endfor %}
-
-        {% for flash in app.flashes('error') %}
-            <div class="flash flash--error">{{ flash }}</div>
-        {% endfor %}
+<div class="admin-opinion">
+    <div class="admin-opinion__header">
+        <h1 class="admin-opinion__titlePage">Avis de nos clients</h1>
     </div>
 
     {% if opinions is empty %}
-        <p class="opinionHome__no-reviews">Aucun avis pour le moment. Soyez le premier !</p>
+        <p class="admin-opinion__no-reviews">Aucun avis pour le moment. Soyez le premier !</p>
     {% else %}
-        <div class="opinionHome__card">
+        <div class="admin-opinion__card">
             {% for opinion in opinions %}
-                <div class="opinionHome__content">
-                    <div class="opinionHome__dates">
-                        <p class="opinionHome__date">{{ opinion.dateSend|date('d/m/Y') }}</p>
-                        <div class="opinionHome__stars">
+                <div class="admin-opinion__content">
+                    <div class="admin-opinion__dates">
+                        <p class="admin-opinion__date">{{ opinion.dateSend|date('d/m/Y') }}</p>
+
+                        <div class="admin-opinion__stars">
                             {% for i in 1..5 %}
                                 {% if i <= opinion.note %}
-                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--filled" alt="étoile">
+                                    <img src="{{ asset('svg/star.svg') }}" class="admin-opinion__star admin-opinion__star--filled" alt="étoile">
                                 {% else %}
-                                    <img src="{{ asset('svg/star.svg') }}" class="opinionHome__star opinionHome__star--empty" alt="étoile vide">
+                                    <img src="{{ asset('svg/star.svg') }}" class="admin-opinion__star admin-opinion__star--empty" alt="étoile vide">
                                 {% endif %}
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="opinionHome__meta">
-                        <p class="opinionHome__author">{{ opinion.reservation.user.email }}</p>
-                        <span class="opinionHome__note">{{ opinion.note }}/5</span>
+
+                    <div class="admin-opinion__meta">
+                        <p class="admin-opinion__author">{{ opinion.reservation.user.email }}</p>
+                        <span class="admin-opinion__note">{{ opinion.note }}/5</span>
                     </div>
-                    <p class="opinionHome__comment">{{ opinion.comment }}</p>
+
+                    <p class="admin-opinion__comment">{{ opinion.comment }}</p>
+
                     {{ include('admin/opinion/_delete_form.html.twig') }}
                 </div>
             {% endfor %}

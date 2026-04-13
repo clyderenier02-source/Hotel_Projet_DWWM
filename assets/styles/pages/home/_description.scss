@@ -1,22 +1,56 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homeDescription {
     background-color: $forest-deep;
-    margin-top: -400px;
-    padding-top: 35rem;
+    margin-top: -239px;
+    padding: 20rem 1rem 2rem 1rem;
+
+    @include tablet {
+            margin: -117px auto 0 auto;
+            padding: 13rem 3rem 3rem 3rem;
+        }
+
+    @include desktop {
+        margin: -150px auto 0 auto;
+        padding: 16rem 5rem 4rem 5rem;
+    }
 
     &__hotel {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include tablet {
+            gap: 3rem;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
     }
 
     &__image {
         border-radius: 10px;
         border: 2px solid $gold;
         margin-bottom: 5rem;
+        width: 100%;
+
+        @include tablet {
+            width: 60%;
+            margin-bottom: 0;
+        }
+
+        @include desktop {
+            width: 48%;
+            flex-shrink: 0;
+        }
     }
 
     &__text {
@@ -24,12 +58,26 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0 5rem;
         font-size: 2rem;
         text-align: center;
-    }
 
-    &__button {
-        margin-bottom: 5rem;
+        @include tablet {
+            font-size: 1.5rem;
+        }
+
+        @include desktop {
+            align-items: flex-start;
+            text-align: left;
+            font-size: 1rem;
+
+            & h2 {
+                text-align: left; 
+            }
+
+            & p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
     }
 }

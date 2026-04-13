@@ -1,26 +1,41 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Photo{% endblock %}
+{% block title %}Photo #{{ photo.id }}{% endblock %}
 
 {% block body %}
-    <h1>Photo</h1>
+<div class="admin-photo-show">
+    <div class="admin-photo-show__header">
+        <h1 class="admin-photo-show__titlePage">Détail photo</h1>
+        <a href="{{ path('app_admin_photo_index') }}" class="admin-photo-show__btn--back">Retour aux photos</a>
+    </div>
+    <div class="admin-photo-show__card">
+        {% if photo.filename %}
+            <div class="admin-photo-show__image">
+                <img src="{{ asset('uploads/' ~ photo.filename) }}" alt="Photo #{{ photo.id }}">
+            </div>
+        {% endif %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ photo.id }}</td>
-            </tr>
-            <tr>
-                <th>Filename</th>
-                <td>{{ photo.filename }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="admin-photo-show__info">
+            <div class="admin-photo-show__item">
+                <p class="admin-photo-show__label">Nom du fichier</p>
+                <p class="admin-photo-show__value">{{ photo.filename ?? '—' }}</p>
+            </div>
 
-    <a href="{{ path('app_admin_photo_index') }}">back to list</a>
+            <div class="admin-photo-show__item">
+                <p class="admin-photo-show__label">Chambre associée</p>
+                <p class="admin-photo-show__value">{{ photo.room ? photo.room.name : 'Aucune chambres associé' }}</p>
+            </div>
 
-    <a href="{{ path('app_admin_photo_edit', {'id': photo.id}) }}">edit</a>
+            <div class="admin-photo-show__item">
+                <p class="admin-photo-show__label">Service associé</p>
+                <p class="admin-photo-show__value">{{ photo.service ? photo.service.name : 'Aucun service associé' }}</p>
+            </div>
 
-    {{ include('admin/photo/_delete_form.html.twig') }}
+            <div class="admin-photo-show__actions">
+                <a href="{{ path('app_admin_photo_edit', {'id': photo.id}) }}" class="admin-photo-show__btn--edit">Modifier</a>
+                {{ include('admin/photo/_delete_form.html.twig', { photo: photo }) }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

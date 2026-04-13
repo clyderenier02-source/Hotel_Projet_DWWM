@@ -1,42 +1,65 @@
-@use '../abstract/variables' as *;
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
 
-* {
+
+* { 
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 
-h1 {
+h1 { 
     font-family: $font-title;
-    font-size: 2rem;
+    font-size: 1.6rem;
+
+    @include desktop {
+        font-size: 2.2rem;
+    }
 }
 
 h2 {
     color: $gold;
-    font-size: 2.7rem;
-    padding-bottom: 5rem;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
     font-family: $font-title;
+
+    @include tablet {
+        font-size: 1.6rem;
+    }
+
+    @include desktop {
+        font-size: 1.9rem;
+    }
 }
 
 p {
     color: $white;
-    font-size: 2rem;
-    padding-bottom: 3rem;
+    font-size: 0.9rem;
+    padding-bottom: 0.8rem;
     font-family: $font-text;
 }
 
-a {
-    text-decoration: none;
+a { text-decoration: none;
     color: $white;
     font-family: $font-text;
 }
 
-.main-front {
+.main-front { 
     background: linear-gradient(to left, $leaf-dark, $forest-deep);
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 h3 {
-    font-size: 4rem;
+    font-size: 1.5rem;
     color: $gold;
     font-family: $font-title;
+
+    @include tablet {
+        font-size: 1.8rem;
+    }
+
+    @include desktop {
+        font-size: 2rem;
+    }
 }

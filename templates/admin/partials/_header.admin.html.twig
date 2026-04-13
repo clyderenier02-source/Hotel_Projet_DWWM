@@ -2,23 +2,23 @@
     <p class="header-text"><span class="header-text_container">Nouveau projet immobilier</span> - Découvrez votre futur chez vous</p>
     <nav class="navbar" id="main-navbar">
         <div class="navbar-container">
-            <a href="" class="nav-logo"><img src="{{ asset('Img-accueil/logo_mobile.png') }}" alt="logo Eden Palm"></a>
+            <a href="/admin/dashboard" class="nav-logo"><img src="{{ asset('Img-accueil/logo_mobile.png') }}" alt="logo Eden Palm"></a>
             <div class="nav-admin-user">
                 <div class="nav-admin">
-                    <li><a href="/">Quitter</a></li>
+                    <a href="/">Quitter</a>
                 </div>
                 <div class="nav-button">
-                    <img src="{{ asset('svg/bars-solid_test.svg') }}" alt="">
+                    <img src="{{ asset('svg/menu.svg') }}" alt="Ouvrir le menu">
                 </div>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="/admin/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a href="/admin/dashboard">Menu</a></li>
                 <li class="nav-item"><a href="/admin/room">Chambres</a></li>
                 <li class="nav-item"><a href="/admin/service">Service</a></li>
                 <li class="nav-item"><a href="/admin/reservation">Réservation</a></li>
-                <li class="nav-item"><a href="/opinion">Avis</a></li>
-                <li class="nav-item"><a href="/contact/new">Contactez-nous</a></li>
-                <li class="nav-item"><a href="/photo">Photo</a></li> 
+                <li class="nav-item"><a href="/admin/opinion">Avis</a></li>
+                <li class="nav-item"><a href="/admin/contact">Contactez-nous</a></li>
+                <li class="nav-item"><a href="/admin/photo">Photo</a></li> 
             </ul>
         </div>
     </nav>

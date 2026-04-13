@@ -1,11 +1,10 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
-
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homeHero {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-image: 
     linear-gradient(rgba(30, 52, 44, 0.934), rgba(30, 52, 44, 0.98)),
@@ -13,7 +12,13 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 60vh;
+    padding: 0 1rem;
+
+    @include desktop {
+        padding: 0 4rem;
+        min-height: 90vh;
+        justify-content: center;
+    }
 
     &__text {
         display: flex;
@@ -21,22 +26,67 @@
         justify-content: center;
         align-items: center;
         gap: 2rem;
+
+        @include tablet {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @include desktop {
+            max-width: 780px;
+            gap: 2.5rem;
+        }
     }
+
     &__title {
         text-align: center;
-        font-size: 2.5rem;
-        margin: 3rem;
+        font-size: 1.2rem;
+        margin-top: 1rem;
         color: $gold;
+
+        @include tablet {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @include desktop {
+            font-size: 2.8rem;
+            margin-top: 0;
+            line-height: 1.2;
+        }
     }
 
     &__subtitle {
-        margin-bottom: 3rem;
-        font-size: 2rem;
         text-align: center;
-        padding: 0 5rem;
+
+        @include tablet {
+            font-size: 1rem;
+        }
+
+        @include desktop {
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.7;
+        }
     }
 
     &__button {
-        margin-bottom: 25rem;
+        display: inline-block;
+        text-align: center;
+        @include button;
+        margin-bottom: 19rem;
+        width: 70%;
+
+        @include tablet {
+            width: 50%;
+            margin-bottom: 18rem;
+        }
+
+        @include desktop {
+            width: auto;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            margin-bottom: 20rem;
+        }
     }
 }

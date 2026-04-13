@@ -1,0 +1,162 @@
+@use "../../abstract/variables" as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
+
+.roomShow {
+    @include desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+        padding: 2rem 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+
+        .roomGallery,
+        .roomDetails {
+            flex: 1;
+        }
+    }
+}
+
+.roomGallery {
+    position: relative;
+    overflow: hidden;
+
+    &__wrapper {
+        display: flex; 
+        width: 100%;
+    }
+
+    &__wrapper img {
+        display: flex;
+        width: 100%;
+        height: 35vh;
+        object-fit: cover;
+        flex-shrink: 0;
+        padding: 2rem 1rem 0 1rem;
+
+        @include tablet {
+            height: 40vh;
+            padding: 4rem 2rem 0 2rem;
+        }
+
+        @include desktop {
+            height: 400px;
+            padding: 0;
+        }
+    }
+
+    &__prev, &__next {
+        position: absolute;
+        font-size: 2rem;
+        background-color: rgba(250, 250, 250, 0.9);
+        color: $gold;
+        font-weight: bold;
+        height: 15%;
+        width: 12%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        cursor: pointer;
+        transition: all 0.4s ease;
+
+        @include tablet {
+            font-size: 3rem;
+        }
+
+        @include desktop {
+            font-size: 4rem;
+            top: 160px;
+        }
+    }
+
+    &__prev {
+        left: 3%;
+
+        @include desktop {
+            left: 0;
+        }
+    }
+
+    &__next {
+        right: 3%;
+
+        @include desktop {
+            right: 0;
+        }
+    }
+}
+
+.roomDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &__content {
+        padding: 0 1rem;
+
+        @include tablet {
+            padding: 0 2rem;
+        }
+
+        @include desktop {
+            flex: 1;
+            padding: 0;
+        }
+    }
+
+    &__name {
+        padding: 1rem 0;
+        font-size: 1.5rem;
+        font-family: $font-title;
+        color: $gold;
+
+        @include desktop {
+            padding-top: 0;
+        }
+    }
+
+    &__actions {
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 0.6rem;
+        padding: 1rem 0;
+
+        @include tablet {
+            flex-direction: row;
+        }
+
+        @include desktop {
+            flex-direction: column;
+            width: 280px;
+            padding: 1rem 0;
+        }
+    }
+
+    &__description {
+        font-size: 0.8rem;
+
+        @include tablet {
+            font-size: 0.9rem !important;
+        }
+    }
+
+    &__actions a {
+        background-color: $gold;
+        padding: 0.9rem;
+        border-radius: $radius-tag;
+        color: $forest-deep;
+        font-family: $font-text;
+        font-size: 0.9rem;
+
+        &:hover {
+            background: darken($gold, 10%);
+        }
+    }
+}

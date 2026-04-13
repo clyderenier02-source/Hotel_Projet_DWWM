@@ -1,0 +1,104 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin .admin-opinion {
+    @include admin-page-wrapper;
+
+    &__header {
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__no-reviews {
+        font-size: 1.1rem;
+        color: $admin-text-muted;
+        padding: 1.5rem 0;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
+
+    &__content {
+        @include admin-card;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    &__dates {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__date {
+        color: $admin-text-muted;
+    }
+
+    &__stars {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    &__star {
+        width: 14px;
+        height: 14px;
+
+        &--filled {
+            filter: brightness(0) saturate(100%) invert(72%) sepia(35%) saturate(600%) hue-rotate(355deg);
+        }
+
+        &--empty {
+            filter: grayscale(100%);
+            opacity: 0.25;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__author {
+        font-family: $font-title;
+        color: $forest-deep;
+        font-size: 1.1rem;
+    }
+
+    &__note {
+        color: $gold;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+
+    &__comment {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    &__btn {
+        @include admin-btn-delete;
+    }
+}

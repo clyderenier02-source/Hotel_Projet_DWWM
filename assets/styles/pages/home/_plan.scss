@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as *;
-@use '../../components/base' as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
 
 .homePlan {
     background-image: 
@@ -19,26 +20,52 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 40vh;
+    height: 45vh;
+    padding: 2rem 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+        height: auto;
+        padding: 4rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @include desktop {
+        padding: 7rem 4rem;
+        min-height: 55vh;
+        justify-content: center;
+    }
 
     &__text {
-        padding-top: 4rem;
         text-align: center;
-        padding: 4rem 5rem;
+
+        @include tablet {
+            max-width: 600px;
+        }
+
+        @include desktop {
+            max-width: 750px;
+
+            & h2 {
+                font-size: 2.2rem;
+            }
+
+            & p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+        }
     }
 
     &__text h2 {
         color: $forest-dark;
-        font-size: 3.5rem;
     }
 
     &__text p {
         color: $forest-dark;
-        font-size: 2.5rem;
-    }
-
-    &__button {
-        background-color: $forest-dark;
-        color: $white;
     }
 }

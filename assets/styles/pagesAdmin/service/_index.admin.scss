@@ -1,0 +1,148 @@
+@use "../../abstract/variables" as *;
+@use "../../abstract/mixins" as *;
+
+.admin-service {
+    @include admin-page-wrapper;
+
+    &__header {
+        @include admin-page-header;
+
+        @include desktop {
+            min-width: 900px;
+        }
+    }
+
+    &__titlePage {
+        @include admin-page-title;
+    }
+
+    &__btn--create {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: $gold;
+        color: $white;
+        padding: 0.5rem 1rem;
+        border-radius: $radius-btn;
+        font-size: 0.9rem;
+        text-decoration: none;
+        font-family: $font-text;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            background: darken($gold, 10%);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+        }
+
+        @include desktop {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            width: 60%;
+            min-width: 900px;
+            margin-inline: auto;
+        }
+    }
+
+    &__card {
+        @include admin-card;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    &__name {
+        font-size: 1rem;
+        font-family: $font-title;
+        color: $forest-deep;
+        margin: 0;
+
+        @include tablet {
+            font-size: 1.1rem;
+        }
+    }
+
+    &__description {
+        font-size: 0.85rem !important;
+        color: $admin-text-subtle !important;
+        line-height: 1.5;
+    }
+
+    &__meta {
+        @include admin-meta-separator;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    &__price {
+        font-size: 0.9rem !important;
+        font-weight: 600;
+        color: $gold !important;
+    }
+
+    &__time {
+        font-size: 0.82rem !important;
+        color: $admin-text-muted !important;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    &__btn {
+
+        &--edit {
+            @include admin-btn-edit;
+        }
+
+        &--delete {
+            @include admin-btn-delete;
+        }
+
+        &--create {
+            background: $gold;
+            color: $white;
+
+            &:hover {
+                background: darken($gold, 10%);
+            }
+        }
+    }
+
+    &__empty {
+        @include admin-empty-state;
+    }
+}

@@ -1,0 +1,26 @@
+@use "../../abstract/variables" as *;
+@use "../../components/base" as *;
+@use "../../abstract/mixins" as *;
+
+.roomList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+
+    @include tablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 2rem 2rem;
+        align-items: start;
+    }
+
+    @include desktop {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 3rem 4rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,72 @@
+{{ form_start(form, {
+    attr: { class: 'contactForm__card'}
+}) }}
+
+    <div class="contactForm__left">
+        <div class="contactForm__intro">
+            <h2>Parlons de<br>votre séjour</h2>
+            <p>Notre équipe vous répond sous 24h</p>
+        </div>
+
+        <div class="contactForm__infos">
+            <div>
+                <p class="contactForm__label">Adresse</p>
+                <p>3 Allée des Palmiers<br>06400 Cannes, France</p>
+            </div>
+            <div>
+                <p class="contactForm__label">Téléphone</p>
+                <p>+33 (0)4 93 12 34 56</p>
+            </div>
+            <div>
+                <p class="contactForm__label">Email</p>
+                <p>contact@edenpalmhotel.fr</p>
+            </div>
+        </div>
+
+        <div class="contactForm__hours">
+            <p class="contactForm__label">Horaires de réception</p>
+            <div class="contactForm__hours-row">
+                <p>Lundi - Vendredi</p>
+                <p>08h00 - 20h00</p>
+            </div>
+            <div class="contactForm__hours-row">
+                <p>Samedi - Dimanche</p>
+                <p>09h00 - 18h00</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contactForm__right">
+        {% for message in app.flashes('success') %}
+            <div class="contactForm__flash">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+
+        <h3>Nous contacter</h3>
+        <p>Tous les champs sont obligatoires</p>
+
+        <div class="contactForm__group">
+            {{ form_row(form.subject, {
+                label_attr: { class: 'contactForm__label' },
+            }) }}
+        </div>
+
+        <div class="contactForm__group">
+            {{ form_row(form.email, {
+                label_attr: { class: 'contactForm__label' },
+            }) }}
+        </div>
+
+        <div class="contactForm__group">
+            {{ form_row(form.message, {
+                label_attr: { class: 'contactForm__label' },
+            }) }}
+        </div>
+
+        <div class="contactForm__actions">
+            <button class="contactForm__btn">{{ button_label|default('Envoyer le message') }}</button>
+        </div>
+    </div>
+
+{{ form_end(form) }}
