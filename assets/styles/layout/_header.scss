@@ -82,7 +82,9 @@ body.menu-open {
                 transform: translateX(100%);
                 transition: all 0.4s ease;
 
-                &.show { transform: translateX(0); }
+                &.show {
+                    transform: translateX(0);
+                }
 
                 @include tablet {
                     top: 110px;

@@ -43,7 +43,7 @@ final class UserController extends AbstractController
     #[Route('/{id}/demote', name: 'app_admin_user_demote', methods: ['POST'])]
     public function demote(User $user, EntityManagerInterface $entityManager, Request $request): Response
     {
-        if (!$this->isCsrfTokenValid('promote' . $user->getId(), $request->getPayload()->getString('_token'))) {
+        if (!$this->isCsrfTokenValid('demote' . $user->getId(), $request->getPayload()->getString('_token'))) {
             $this->addFlash('error', 'Token CSRF invalide.');
             return $this->redirectToRoute('app_admin_user_index');
         }

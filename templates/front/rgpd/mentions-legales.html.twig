@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales - Eden Palm{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="Mentions légales du site Eden Palm. Informations sur l'éditeur, l'hébergement et la politique de confidentialité.">
+{% endblock %}
+
+{% block body %}
+
+    {# Hero de pages #}
+    <section class="pageHero">
+        <div class="pageHero__breadcrumb">
+            <a href="{{ path('app_home') }}">Accueil</a>
+            <span>»</span>
+            <p>Mentions légales</p>
+        </div>
+        <div class="pageHero__title">
+            <h1>Mentions légales</h1>
+        </div>
+    </section>
+
+    {# contenu principal #}
+    <section class="mentionsLegales">
+        <div class="mentionsLegales__container">
+
+            {# Éditeur du site #}
+            <div class="mentionsLegales__block">
+                <h2>Éditeur du site</h2>
+                <p>Le site Eden Palm est édité dans le cadre d'un projet de formation professionnelle (DWWM - Développeur Web et Web Mobile).</p>
+                <p>Nom de l'éditeur : Renier Clyde</p>
+                <p>Adresse : 3 Allée des Palmiers 06400 Cannes, France</p>
+                <p>E-mail de contact : contact@edenpalmhotel.fr</p>
+                <p>Statut : projet fictif à vocation pédagogique - aucune transaction commerciale réelle n'est effectuée sur ce site.</p>
+            </div>
+
+            {# Hébergement #}
+            <div class="mentionsLegales__block">
+                <h2>Hébergement</h2>
+                <p>Le site est hébergé localement dans le cadre du développement. En cas de déploiement, l'hébergeur sera précisé ici avec ses coordonnées complètes.</p>
+                <p>Hébergeur : AlwaysData</p>
+                <p>Adresse : 91 rue du Faubourg Saint Honoré - 75008 Paris.</p>
+                <p>Site web :  https://www.alwaysdata.com/fr/</p>
+            </div>
+
+            {# Propriété intellectuelle #}
+            <div class="mentionsLegales__block">
+                <h2>Propriété intellectuelle</h2>
+                <p>L'ensemble des contenus présents sur le site Eden Palm (textes, images, structure, code source) sont réalisés dans un cadre pédagogique.
+                Toute reproduction, même partielle, est interdite sans autorisation préalable de l'auteur.</p>
+                <p>Les images utilisées sont soit libres de droits, soit créées spécifiquement pour ce projet.</p>
+            </div>
+
+            {# Données personnelles #}
+            <div class="mentionsLegales__block">
+                <h2>Données personnelles</h2>
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679), vous disposez des droits suivants concernant vos données personnelles :</p>
+                <p>Droit d'accès : vous pouvez demander à consulter les données vous concernant.</p>
+                <p>Droit de rectification : vous pouvez demander la correction de données inexactes.</p>
+                <p>Droit à l'effacement : vous pouvez demander la suppression de vos données.</p>
+                <p>Droit d'opposition : vous pouvez vous opposer au traitement de vos données.</p>
+                <p>Pour exercer ces droits, contactez-nous à l'adresse suivante : contact@edenpalmhotel.fr</p>
+                <p>Les données collectées sur ce site (nom, adresse e-mail, informations de réservation) sont utilisées uniquement dans le cadre de la gestion des réservations et ne sont en aucun cas transmises à des tiers.</p>
+            </div>
+
+            {# Cookies #}
+            <div class="mentionsLegales__block">
+                <h2>Cookies</h2>
+                <p>Le site Eden Palm utilise des cookies de session afin d'assurer le bon fonctionnement de l'espace utilisateur (maintien de la connexion, stockage temporaire des dates de réservation). 
+                Ces cookies sont strictement nécessaires au fonctionnement du site et ne sont pas utilisés à des fins publicitaires ou de traçage.</p>
+                <p>Aucun cookie tiers n'est déposé sur votre navigateur lors de votre visite sur ce site.</p>
+            </div>
+
+            {# Responsabilité #}
+            <div class="mentionsLegales__block">
+                <h2>Limitation de responsabilité</h2>
+                <p>Le site Eden Palm est un projet pédagogique fictif. Aucune réservation ni paiement réel ne sont traités. L'éditeur ne saurait être tenu responsable d'éventuelles erreurs, omissions ou indisponibilités du site.</p>
+                <p>Les informations présentes sur ce site sont fournies à titre indicatif et peuvent être modifiées à tout moment sans préavis.</p>
+            </div>
+
+            {# Contact #}
+            <div class="mentionsLegales__block">
+                <h2>Contact</h2>
+                <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter via le <a href="{{ path('app_contact_new') }}">formulaire de contact</a> 
+                disponible sur le site ou directement par e-mail à l'adresse contact@edenpalmhotel.fr.</p>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -39,4 +39,7 @@
 
 @use 'pages/service/index' as serviceList;
 
+@use 'pages/rgpd/mentions' as mentionsLegales;
+@use 'pages/rgpd/politique' as privacy;
+
 @use "fonts/fonts";
