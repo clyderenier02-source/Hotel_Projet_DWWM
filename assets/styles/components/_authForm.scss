@@ -1,6 +1,7 @@
 @use "../abstract/variables" as *;
 @use "../components/base" as *;
 @use "../abstract/mixins" as *;
+@use "sass:color";
 
 .loginForm {
     display: flex;
@@ -155,7 +156,7 @@
         transition: background 0.2s ease, box-shadow 0.2s ease;
 
         &:hover {
-            background: lighten($gold, 7%);
+            background: color.adjust($gold, $lightness: 7%);
             box-shadow: 0 4px 18px rgba($gold, 0.28);
         }
 
@@ -181,7 +182,7 @@
             transition: color 0.2s ease;
 
             &:hover {
-                color: lighten($gold, 10%);
+                color: color.adjust($gold, $lightness: 10%);
                 text-decoration: underline;
                 text-underline-offset: 2px;
             }

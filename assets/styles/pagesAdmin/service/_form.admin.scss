@@ -1,5 +1,6 @@
 @use "../../abstract/variables" as *;
 @use "../../abstract/mixins" as *;
+@use "sass:color";
 
 .admin-service-form {
     @include admin-page-wrapper;
@@ -93,7 +94,7 @@
         cursor: pointer;
 
         &:hover {
-            background: darken($gold, 10%);
+            background: color.adjust($gold, $lightness: 10%);
         }
     }
 

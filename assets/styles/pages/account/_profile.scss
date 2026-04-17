@@ -1,6 +1,7 @@
 @use "../../abstract/variables" as *;
 @use '../../components/base' as *;
 @use '../../abstract/mixins' as *;
+@use "sass:color";
 
 .account {
     width: 100%;
@@ -162,7 +163,7 @@
         border-radius: $radius-btn;
         font-size: 0.9rem;
         font-family: $font-text;
-        color: lighten($color-danger-text, 20%);
+        color: color.adjust($color-danger-text, $lightness: 20%);
         cursor: pointer;
         transition: all 0.2s ease;
 

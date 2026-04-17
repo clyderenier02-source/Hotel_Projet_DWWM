@@ -1,6 +1,7 @@
 @use "../../abstract/variables" as *;
 @use "../../components/base" as *;
 @use "../../abstract/mixins" as *;
+@use "sass:color";
 
 .roomShow {
     @include desktop {
@@ -156,7 +157,7 @@
         font-size: 0.9rem;
 
         &:hover {
-            background: darken($gold, 10%);
+            background: color.adjust($gold, $lightness: 10%);
         }
     }
 }
