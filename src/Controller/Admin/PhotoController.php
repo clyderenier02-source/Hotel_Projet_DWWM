@@ -34,22 +34,24 @@ final class PhotoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // Récupération du fichier depuis le formulaire
+            // Récupération du fichier uploaddé depuis le formulaire
             $file = $form->get('filename')->getData();
 
             // Si un fichier a été envoyé :
             if ($file) {
 
-            // On travail le nom du fichier
+            // On extracte le nom du fichier
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-                // nécessaire pour inclure le nom du fichier à une partie de l'URL de manière sécurisée
+                // supprime les caractères spéciaux et les espaces
+                // et rend le nom imprévisible pour un attaquant
                 $safeFilename = $slugger->slug($originalFilename);
 
                 // On ajoute un identifiant unique au nom du fichier pour s'assurer que deux fichiers n'aient pas le même nom
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
 
-                // On déplace le fichier sur le serveur
+                // On déplace le fichier dans un dossier hors de la racine web
+                // dossier non aaccesible dans l'URL
                 $file->move(
                     $this->getParameter('uploads_directory'),
                     $newFilename

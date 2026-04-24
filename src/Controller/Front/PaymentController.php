@@ -20,25 +20,28 @@ final class PaymentController extends AbstractController
     #[Route('/{id}/pay', name: 'app_payment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, Room $room, EntityManagerInterface $entityManager): Response
     {
+        // On récupère les dates stockées en session
         $session = $request->getSession();
-
         $dateArrived = $session->get('date_arrived');
         $dateReturn = $session->get('date_return');
 
+        // Si les dates absentes on renvoie vers accueil on évite les accès directe
         if(!$dateArrived || !$dateReturn){
             return $this->redirectToRoute('app_home');
         }
 
+        // Conversion en DateTime
         $start = \DateTime::createFromFormat('d-m-Y', $dateArrived);
         $end = \DateTime::createFromFormat('d-m-Y', $dateReturn);
 
+        // calcul du nombre de nuits
         $interval = $start->diff($end);
         $nights = $interval->days;
 
         $form = $this->createForm(PaymentType::class);
         $form->handleRequest($request);
 
-        // Prix total
+        // Prix total nombre de nuits x prix par nuit
         $total = $nights * $room->getPriceNight();
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -46,9 +49,9 @@ final class PaymentController extends AbstractController
             $this->addFlash('success', 'Votre réservation a été prise en compte avec succès !');
 
             $mode = $form->get('mode')->getData();
-
             $status = 'paid';
 
+            // création de réservation
             $reservation = new Reservation();
             $reservation->setUser($this->getUser());
             $reservation->setRoom($room);
@@ -57,6 +60,7 @@ final class PaymentController extends AbstractController
             $reservation->setTotalPrice($total);
             $reservation->setStatus($status);
 
+            // création du paiement lié à la réservation
             $payment = new Payment();
             $payment->setStatus($status);
             $payment->setDatePayment(new \DateTime());
@@ -64,6 +68,7 @@ final class PaymentController extends AbstractController
             $payment->setMode($mode);
             $payment->setReservation($reservation);
 
+            // Persist réservation et paiement en même temp
             $entityManager->persist($reservation);
             $entityManager->persist($payment);
             $entityManager->flush();
